@@ -12,7 +12,7 @@ function ChatInput() {
         rows={1}
         className={'p-1 w-full resize-none focus-visible:outline-none'}
         placeholder='Send a message...'
-      ></textarea>
+      />
       <button className={'absolute right-1 top-1 mr-2 mt-2 opacity-30'}>
         <Image src={'/send.svg'} alt={'Send'} width={20} height={20}/>
       </button>
