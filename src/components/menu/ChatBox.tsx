@@ -18,7 +18,7 @@ function ChatBox(props: IProps) {
 
 
   return (
-    <div className={'flex flex-row justify-between relative mt-2 p-2 text-white rounded-l hover:bg-menuColors-700 hover:cursor-pointer'}>
+    <div className={'flex flex-row justify-between relative mt-2 p-2 text-white rounded-lg hover:bg-menuColors-700 hover:cursor-pointer'}>
       {/* content */}
       <div className={'flex'}>
         <Image
