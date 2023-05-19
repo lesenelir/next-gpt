@@ -18,6 +18,7 @@ function MenuSettings(props: IProps) {
         alt={imgAlt}
         width={imgWidth}
         height={imgHeight}
+        className={'ml-2'}
       />
       <button className={'p-2 text-left text-white'}>
         {buttonContent}
