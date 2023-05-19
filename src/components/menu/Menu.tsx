@@ -1,11 +1,26 @@
 import {useState} from "react"
 import Divide from "@/components/utils/Divide"
-import ChatBox from "@/components/menu/ChatBox";
+import ChatBox from "@/components/menu/ChatBox"
+import MenuSettings from "@/components/menu/MenuSettings"
 
 
 export interface IChat {
-  id: number;
+  id: number
 }
+
+interface IMenuSettings {
+  imgSrc: string
+  imgAlt: string
+  imgWidth: number
+  imgHeight: number
+  buttonContent: string
+}
+
+const menuSettingsArr: IMenuSettings[] = [
+  {imgSrc: '/trash.svg', imgAlt: 'trash icon', imgWidth: 16, imgHeight: 16, buttonContent: 'Clear Conversations'},
+  {imgSrc: '/key.svg', imgAlt: 'key icon', imgWidth: 16, imgHeight: 16, buttonContent: 'OpenAI key'},
+  {imgSrc: '/settings.svg', imgAlt: 'settings icon', imgWidth: 16, imgHeight: 16, buttonContent: 'Settings'}
+]
 
 
 function Menu() {
@@ -41,9 +56,16 @@ function Menu() {
       {/*Button*/}
       <Divide/>
       <div className={'mt-4'}>
-        <button className={'p-2 rounded-lg mb-2 w-full text-left text-white hover:bg-menuColors-700'}>Clear Conversations</button>
-        <button className={'p-2 rounded-lg mb-2 w-full text-left text-white hover:bg-menuColors-700'}>OpenAI key</button>
-        <button className={'p-2 rounded-lg mb-2 w-full text-left text-white hover:bg-menuColors-700'}>Settings</button>
+        {menuSettingsArr.map(menu => (
+          <MenuSettings
+            key={menu.imgSrc}
+            imgSrc={menu.imgSrc}
+            imgAlt={menu.imgAlt}
+            imgWidth={menu.imgWidth}
+            imgHeight={menu.imgHeight}
+            buttonContent={menu.buttonContent}
+          />
+        ))}
       </div>
     </div>
   )
