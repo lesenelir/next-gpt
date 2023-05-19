@@ -1,12 +1,28 @@
+import {useState} from "react"
 import Divide from "@/components/utils/Divide"
+import ChatBox from "@/components/menu/ChatBox";
+
+
+export interface IChat {
+  id: number;
+}
+
 
 function Menu() {
+  const [chats, setChats] = useState<IChat[]>([])
+
+  const handlerAddChat = () => {
+    setChats(prevState => [...prevState, {id: Math.random()}])
+  }
 
   return (
     <div className={'flex flex-col justify-between w-64 bg-menuColors-800 p-2'}>
       {/*Top*/}
       <div className={'mb-4'}>
-        <button className={'p-2 border rounded-lg mb-2 w-full text-left text-white'}>+ New chat</button>
+        <button
+          className={'p-2 border rounded-lg mb-2 w-full text-left text-white'}
+          onClick={handlerAddChat}
+        >+ New chat</button>
         <input
           type="text"
           placeholder={'Search...'}
@@ -16,7 +32,11 @@ function Menu() {
 
       {/*Content*/}
       <Divide/>
-      <div className={'flex-grow'}></div>
+      <div className={'flex-grow overflow-auto scrollable'}>
+        {chats.map(chat => (
+          <ChatBox key={chat.id} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>
+        ))}
+      </div>
 
       {/*Button*/}
       <Divide/>
