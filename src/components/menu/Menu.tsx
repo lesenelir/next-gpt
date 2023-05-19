@@ -1,26 +1,14 @@
 import {useState} from "react"
 import Divide from "@/components/utils/Divide"
 import ChatBox from "@/components/menu/ChatBox"
+import MenuClear from "@/components/menu/MenuClear"
+import MenuKey from "@/components/menu/MenuKey"
 import MenuSettings from "@/components/menu/MenuSettings"
 
 
 export interface IChat {
   id: number
 }
-
-interface IMenuSettings {
-  imgSrc: string
-  imgAlt: string
-  imgWidth: number
-  imgHeight: number
-  buttonContent: string
-}
-
-const menuSettingsArr: IMenuSettings[] = [
-  {imgSrc: '/trash.svg', imgAlt: 'trash icon', imgWidth: 16, imgHeight: 16, buttonContent: 'Clear Conversations'},
-  {imgSrc: '/key.svg', imgAlt: 'key icon', imgWidth: 16, imgHeight: 16, buttonContent: 'OpenAI key'},
-  {imgSrc: '/settings.svg', imgAlt: 'settings icon', imgWidth: 16, imgHeight: 16, buttonContent: 'Settings'}
-]
 
 
 function Menu() {
@@ -56,16 +44,9 @@ function Menu() {
       {/*Button*/}
       <Divide/>
       <div className={'mt-4'}>
-        {menuSettingsArr.map(menu => (
-          <MenuSettings
-            key={menu.imgSrc}
-            imgSrc={menu.imgSrc}
-            imgAlt={menu.imgAlt}
-            imgWidth={menu.imgWidth}
-            imgHeight={menu.imgHeight}
-            buttonContent={menu.buttonContent}
-          />
-        ))}
+        <MenuClear/>
+        <MenuKey/>
+        <MenuSettings/>
       </div>
     </div>
   )
