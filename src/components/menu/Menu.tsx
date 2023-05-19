@@ -26,7 +26,7 @@ function Menu() {
         <input
           type="text"
           placeholder={'Search...'}
-          className={'border border-gray-300 p-1 rounded-l w-full focus-visible:outline-none'}
+          className={'border border-gray-300 p-2 rounded-lg w-full bg-menuColors-700 focus: text-white'}
         />
       </div>
 
