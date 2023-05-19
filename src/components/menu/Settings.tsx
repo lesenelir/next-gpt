@@ -25,8 +25,6 @@ function Settings(props: IProps) {
     setShowGlobal(true)
   }
 
-  // absolute left-0 top-0 bottom-0 right-0 m-auto
-
   return (
     <div className={'w-full h-full p-4 flex flex-col rounded-lg bg-menuColors-800'}>
       <div className={'flex flex-row justify-between'}>

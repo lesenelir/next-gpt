@@ -18,7 +18,7 @@ function MenuSettings() {
       )}
 
       <div
-        className={'flex flex-row rounded-lg mb-1 hover:bg-menuColors-700'}
+        className={'flex flex-row rounded-lg mb-1 hover:bg-menuColors-700 hover:cursor-pointer'}
         onClick={() => setShowModalSettings(!showModalSettings)}
       >
         <Image

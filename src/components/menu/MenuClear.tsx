@@ -3,7 +3,7 @@ import Image from "next/image"
 
 function MenuClear() {
   return (
-    <div className={'flex flex-row rounded-lg mb-1 hover:bg-menuColors-700'}>
+    <div className={'flex flex-row rounded-lg mb-1 hover:bg-menuColors-700 hover:cursor-pointer'}>
       <Image
         src={'/trash.svg'}
         alt={'trash icon'}
