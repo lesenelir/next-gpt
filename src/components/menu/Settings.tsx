@@ -29,9 +29,14 @@ function Settings(props: IProps) {
     <div className={'w-full h-full p-4 flex flex-col rounded-lg bg-menuColors-800'}>
       <div className={'flex flex-row justify-between'}>
         <p className={'text-white mb-2'}>Settings</p>
-        <Image src={'/x.svg'} alt={'x icon'} width={20} height={20} className={'mb-1 hover:cursor-pointer'} onClick={() => {
-          setShowModalSettings(false)
-        }}/>
+        <Image
+          src={'/x.svg'}
+          alt={'x icon'}
+          width={20}
+          height={20}
+          className={'mb-1 hover:cursor-pointer'}
+          onClick={() => setShowModalSettings(false)}
+        />
       </div>
       <Divide/>
 
