@@ -44,7 +44,7 @@ function Menu() {
       {/*Button*/}
       <Divide/>
       <div className={'mt-4'}>
-        <MenuClear/>
+        <MenuClear setChats={setChats}/>
         <MenuKey/>
         <MenuSettings/>
       </div>

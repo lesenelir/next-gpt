@@ -1,9 +1,21 @@
 import Image from "next/image"
+import {IChat} from "@/components/menu/Menu"
 
 
-function MenuClear() {
+interface IProps {
+  setChats: (chats: IChat[]) => void
+}
+
+
+function MenuClear(props: IProps) {
+  const {setChats} = props
+
+
   return (
-    <div className={'flex flex-row rounded-lg mb-1 hover:bg-menuColors-700 hover:cursor-pointer'}>
+    <div
+      className={'flex flex-row rounded-lg mb-1 hover:bg-menuColors-700 hover:cursor-pointer'}
+      onClick={() => {setChats([])}}
+    >
       <Image
         src={'/trash.svg'}
         alt={'trash icon'}
