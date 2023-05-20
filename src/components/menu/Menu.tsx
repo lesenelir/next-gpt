@@ -1,3 +1,4 @@
+import Image from "next/image"
 import {ChangeEvent, useState} from "react"
 import Divide from "@/components/utils/Divide"
 import ChatBox from "@/components/menu/ChatBox"
@@ -28,20 +29,27 @@ function Menu() {
           onClick={handlerAddChat}
         >+ New chat
         </button>
-        <input
-          type="text"
-          value={search}
-          placeholder={'Search...'}
-          className={'border border-gray-300 p-2 rounded-lg w-full bg-menuColors-700 focus:text-white'}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            setSearch(e.target.value)
-            setIsSearch(true)
-          }}
-          onBlur={() => {
-            setSearch('')
-            setIsSearch(false)
-          }}
-        />
+        <div className={'relative rounded-lg'}>
+          <input
+            type="text"
+            value={search}
+            placeholder={'Search...'}
+            className={'border border-gray-300 p-2 rounded-lg w-full bg-menuColors-700 focus:text-white'}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              setSearch(e.target.value)
+              setIsSearch(true)
+            }}
+            onBlur={() => {
+              setSearch('')
+              setIsSearch(false)
+            }}
+          />
+          {isSearch && (
+            <button className={'absolute right-0 top-0 mt-1 p-2 opacity-90'}>
+              <Image src={'/x.svg'} alt={'x icon'} width={20} height={20}/>
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Content */}
