@@ -8,6 +8,7 @@ import MenuSettings from "@/components/menu/MenuSettings"
 
 export interface IChat {
   id: number
+  message: string
 }
 
 
@@ -16,7 +17,7 @@ function Menu() {
   const [search, setSearch] = useState<string>('')
 
   const handlerAddChat = () => {
-    setChats(prevState => [...prevState, {id: Math.random()}])
+    setChats(prevState => [...prevState, {id: Math.random(), message: 'new Chat Object'}])
   }
 
   return (
@@ -41,7 +42,7 @@ function Menu() {
       <Divide/>
       <div className={'flex-grow overflow-auto scrollable'}>
         {chats.map(chat => (
-          <ChatBox key={chat.id} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>
+          <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>
         ))}
       </div>
 
