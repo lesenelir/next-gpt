@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {ChangeEvent, useState} from "react"
 import Divide from "@/components/utils/Divide"
 import ChatBox from "@/components/menu/ChatBox"
 import MenuClear from "@/components/menu/MenuClear"
@@ -13,6 +13,7 @@ export interface IChat {
 
 function Menu() {
   const [chats, setChats] = useState<IChat[]>([])
+  const [search, setSearch] = useState<string>('')
 
   const handlerAddChat = () => {
     setChats(prevState => [...prevState, {id: Math.random()}])
@@ -28,8 +29,11 @@ function Menu() {
         >+ New chat</button>
         <input
           type="text"
+          value={search}
           placeholder={'Search...'}
-          className={'border border-gray-300 p-2 rounded-lg w-full bg-menuColors-700 focus: text-white'}
+          className={'border border-gray-300 p-2 rounded-lg w-full bg-menuColors-700 focus:text-white'}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
+          onBlur={() => setSearch('')}
         />
       </div>
 
