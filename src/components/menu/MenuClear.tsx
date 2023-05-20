@@ -1,15 +1,12 @@
 import Image from "next/image"
 import {IChat} from "@/components/menu/Menu"
 
-
 interface IProps {
   setChats: (chats: IChat[]) => void
 }
 
-
 function MenuClear(props: IProps) {
   const {setChats} = props
-
 
   return (
     <div

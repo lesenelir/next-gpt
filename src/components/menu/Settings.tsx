@@ -4,11 +4,9 @@ import Divide from "@/components/utils/Divide"
 import ThemeMenu from "@/components/menu/ThemeMenu"
 import GlobalMenu from "@/components/menu/GlobalMenu"
 
-
 interface IProps {
   setShowModalSettings: (showModalSettings: boolean) => void
 }
-
 
 function Settings(props: IProps) {
   const {setShowModalSettings} = props

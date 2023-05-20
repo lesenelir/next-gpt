@@ -10,7 +10,6 @@ function KeyModal(props: IProps) {
   const {setShowModalKey} = props
   const [inputValue, setInputValue] = useState<string>('')
 
-
   return (
     <>
       <div className={'w-full h-full p-4 flex flex-col rounded-lg bg-menuColors-800'}>
@@ -22,7 +21,8 @@ function KeyModal(props: IProps) {
             width={20}
             height={20}
             className={'mb-1 hover:cursor-pointer'}
-            onClick={() => setShowModalKey(false)}/>
+            onClick={() => setShowModalKey(false)}
+          />
         </div>
         <Divide/>
 

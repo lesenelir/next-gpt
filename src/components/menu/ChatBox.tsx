@@ -2,7 +2,6 @@ import Image from "next/image"
 import {ChangeEvent, Dispatch, SetStateAction, useState} from "react"
 import {IChat} from "@/components/menu/Menu"
 
-
 interface IProps {
   id: number
   message: string
@@ -10,24 +9,21 @@ interface IProps {
   setChatsArr: Dispatch<SetStateAction<IChat[]>>
 }
 
-
 function ChatBox(props: IProps) {
   const {id, message, chatsArr, setChatsArr} = props
   const [inputValue, setInputValue] = useState<string>(message)
   const [isEdit, setIsEdit] = useState<boolean>(false)
 
-
   const handlerCheckClick = () => {
     setIsEdit(!isEdit)
     const updatedChats: IChat[] = chatsArr.map((chat: IChat) => {
-      if(chat.id === id) {
+      if (chat.id === id) {
         return {...chat, message: inputValue}
       }
       return chat
     })
     setChatsArr(updatedChats)
   }
-
 
   return (
     <div className={'flex flex-row justify-between relative mt-2 p-2 text-white rounded-lg hover:bg-menuColors-700 hover:cursor-pointer'}>
@@ -94,7 +90,7 @@ function ChatBox(props: IProps) {
             height={16}
             className={'mr-2 cursor-pointer'}
             onClick={() => {
-              const newChatsArr = chatsArr.filter(chat => chat.id !== id)
+              const newChatsArr: IChat[] = chatsArr.filter((chat: IChat) => chat.id !== id)
               setChatsArr(newChatsArr)
             }}
           />

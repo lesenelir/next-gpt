@@ -16,7 +16,7 @@ function ModalOverlay(props: IProps) {
         {children}
       </div>
     </div>
-  );
+  )
 }
 
 export default ModalOverlay

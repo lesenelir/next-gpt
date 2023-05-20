@@ -3,10 +3,8 @@ import {useState} from "react"
 import Settings from "@/components/menu/Settings"
 import ModalOverlay from "@/components/menu/ModalOverlay"
 
-
 function MenuSettings() {
   const [showModalSettings, setShowModalSettings] = useState<boolean>(false)
-
 
   return (
     <>
