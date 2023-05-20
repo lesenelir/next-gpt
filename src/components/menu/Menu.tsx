@@ -15,9 +15,10 @@ export interface IChat {
 function Menu() {
   const [chats, setChats] = useState<IChat[]>([])
   const [search, setSearch] = useState<string>('')
+  const [isSearch, setIsSearch] = useState<boolean>(false)
 
   const handlerAddChat = () => {
-    setChats(prevState => [...prevState, {id: Math.random(), message: 'new Chat Object'}])
+    setChats(prevState => [...prevState, {id: Math.random(), message: 'new Chat'}])
   }
 
   return (
@@ -33,17 +34,29 @@ function Menu() {
           value={search}
           placeholder={'Search...'}
           className={'border border-gray-300 p-2 rounded-lg w-full bg-menuColors-700 focus:text-white'}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
-          onBlur={() => setSearch('')}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            setSearch(e.target.value)
+            setIsSearch(true)
+          }}
+          onBlur={() => {
+            setSearch('')
+            setIsSearch(false)
+          }}
         />
       </div>
 
       {/*Content*/}
       <Divide/>
       <div className={'flex-grow overflow-auto scrollable'}>
-        {chats.map(chat => (
-          <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>
-        ))}
+        {isSearch ? (
+          chats.filter(chat => chat.message.includes(search)).map(chat => (
+            <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>
+          ))
+        ) : (
+          chats.map(chat => (
+            <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>
+          ))
+        )}
       </div>
 
       {/*Button*/}

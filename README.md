@@ -22,10 +22,6 @@ Additionally, Typescript has been incorporated into the entire project.
 - [ ] Login authentication
 
 
-## Problem
-
-- [ ] Search Menu Feature 
-
 
 
 ---
