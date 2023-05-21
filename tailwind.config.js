@@ -26,7 +26,15 @@ module.exports = {
           '800': '#35383a',
           '900': '#2f3032',
           '950': '#202123',
-        }
+        },
+        // theme: {
+        //   'bg-dark': 'var(--background-dark)',
+        //   'bg-light': 'var(--background-light)',
+        //   'input-dark': 'var(--input-dark)',
+        //   'input-light': 'var(--input-light)',
+        //   'text-dark': 'var(--text-dark)',
+        //   'text-light': 'var(--text-light)',
+        // }
       },
     },
   },

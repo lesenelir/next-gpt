@@ -17,11 +17,11 @@ function Menu() {
   const [isSearch, setIsSearch] = useState<boolean>(false)
 
   const handlerAddChat = () => {
-    setChats((prevState: IChat[]) => [...prevState, {id: Math.random(), message: 'new Chat'}])
+    setChats((prevState: IChat[]) => [{id: Math.random(), message: 'new Chat'}, ...prevState])
   }
 
   return (
-    <div className={'flex flex-col justify-between w-64 bg-menuColors-800 p-2'}>
+    <div className={'flex flex-col justify-between w-64 bg-menuColors-900 p-2'}>
       {/* Top */}
       <div className={'mb-4'}>
         <button

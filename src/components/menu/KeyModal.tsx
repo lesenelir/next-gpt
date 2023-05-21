@@ -33,7 +33,7 @@ function KeyModal(props: IProps) {
               type="text"
               value={inputValue}
               onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
-              className={'w-3/4 border border-gray-300 p-2 rounded-lg bg-menuColors-700 mt-2'}
+              className={'w-3/4 border border-gray-400 p-2 rounded-lg bg-menuColors-700 mt-2'}
             />
             <button className={'w-1/5 h-3/4 mt-2 rounded-lg bg-emerald-800 hover:bg-emerald-700'}>Save</button>
           </div>

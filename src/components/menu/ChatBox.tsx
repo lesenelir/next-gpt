@@ -45,7 +45,7 @@ function ChatBox(props: IProps) {
               className={'w-10/12 border p bg-transparent'}
             />
           ) : (
-            <p>{message.slice(0, 18)}</p>
+            <p>{message.slice(0, 9)}</p>
           )}
         </div>
       </div>
