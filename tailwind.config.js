@@ -26,6 +26,7 @@ module.exports = {
           '800': '#35383a',
           '900': '#2f3032',
           '950': '#202123',
+          'chatGround': '#343540',
         },
         // theme: {
         //   'bg-dark': 'var(--background-dark)',
