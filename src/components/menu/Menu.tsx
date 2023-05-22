@@ -11,7 +11,12 @@ export interface IChat {
   message: string
 }
 
-function Menu() {
+interface IProps {
+  isMenuOpen: boolean
+}
+
+function Menu(props: IProps) {
+  const {isMenuOpen} = props
   const [chats, setChats] = useState<IChat[]>([])
   const [search, setSearch] = useState<string>('')
   const [isSearch, setIsSearch] = useState<boolean>(false)
@@ -21,7 +26,9 @@ function Menu() {
   }
 
   return (
-    <div className={'flex flex-col justify-between w-64 bg-menuColors-900 p-2'}>
+    <div className={`h-screen flex flex-col justify-between bg-menuColors-900 p-2 w-64
+    max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:z-10 max-sm:w-3/4 max-sm:flex max-sm:flex-col
+    ${isMenuOpen ? 'max-sm:block': 'max-sm:hidden'}`}>
       {/* Top */}
       <div className={'mb-4'}>
         <button
