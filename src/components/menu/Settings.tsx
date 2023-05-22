@@ -24,7 +24,9 @@ function Settings(props: IProps) {
   }
 
   return (
-    <div className={'w-full h-full p-4 flex flex-col rounded-lg bg-menuColors-800'}>
+    <div className={'w-full h-full p-4 flex flex-col rounded-lg bg-menuColors-800 ' +
+      'max-sm: w-full max-sm:h-full'}
+    >
       <div className={'flex flex-row justify-between'}>
         <p className={'text-white mb-2'}>Settings</p>
         <Image
@@ -57,7 +59,7 @@ function Settings(props: IProps) {
           {showTheme && !showGlobal && (
             <>
               <div className={'text-white p-2 flex flex-col justify-between'}>
-                <p className={'mb-2'}>Theme</p>
+                <p className={'mb-4'}>Theme</p>
                 <ThemeMenu/>
               </div>
             </>
@@ -66,7 +68,7 @@ function Settings(props: IProps) {
           {!showTheme && showGlobal && (
             <>
               <div className={'text-white p-2 flex flex-col justify-between'}>
-                <p className={'mb-2'}>Global</p>
+                <p className={'mb-4'}>Global</p>
                 <GlobalMenu/>
               </div>
             </>
