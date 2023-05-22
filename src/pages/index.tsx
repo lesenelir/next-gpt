@@ -25,14 +25,16 @@ function Home() {
 
       {/*Mobile*/}
       <div className={'h-screen max-sm:flex sm:hidden flex-col'}>
-        <Menu isMenuOpen={isMenuOpen}/>
-        <div
-          className={`${isMenuOpen ? 'block' : 'hidden'} fixed top-0 left-3/4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
-          onClick={toggleMenu}
-        >
-          <XIcon/>
+        <div className={`${theme === 'dark' ? 'bg-menuColors-700' : 'bg-white'}`}>
+          <Menu isMenuOpen={isMenuOpen}/>
+          <div
+            className={`${isMenuOpen ? 'block' : 'hidden'} fixed top-0 left-3/4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+            onClick={toggleMenu}
+          >
+            <XIcon/>
+          </div>
+          <button className={`${theme === 'dark' ? 'text-white' : 'text-black'}`} onClick={toggleMenu}><ShrinkIcon/></button>
         </div>
-        <button onClick={toggleMenu}><ShrinkIcon/></button>
         <Divide/>
         <Chat/>
       </div>
