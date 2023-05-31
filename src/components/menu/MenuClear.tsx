@@ -10,7 +10,7 @@ function MenuClear(props: IProps) {
 
   return (
     <div
-      className={'flex flex-row rounded-lg mb-1 hover:bg-menuColors-700 hover:cursor-pointer'}
+      className={'flex flex-row rounded-lg mb-1 hover:bg-tuna-900 hover:cursor-pointer'}
       onClick={() => {setChats([])}}
     >
       <Image

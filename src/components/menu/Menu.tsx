@@ -26,7 +26,7 @@ function Menu(props: IProps) {
   }
 
   return (
-    <div className={`h-screen flex flex-col justify-between bg-menuColors-900 p-2 w-64
+    <div className={`h-screen flex flex-col justify-between bg-menuColors-950 p-2 w-64
     max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:z-10 max-sm:w-3/4 max-sm:flex max-sm:flex-col
     ${isMenuOpen ? 'max-sm:block': 'max-sm:hidden'}`}>
       {/* Top */}
@@ -36,12 +36,12 @@ function Menu(props: IProps) {
           onClick={handlerAddChat}
         >+ New chat
         </button>
-        <div className={'relative rounded-lg'}>
+        <div className={'relative rounded-lg border'}>
           <input
             type="text"
             value={search}
             placeholder={'Search...'}
-            className={'border border-gray-300 p-2 rounded-lg w-full bg-menuColors-700 focus:text-white'}
+            className={'p-2 rounded-lg w-full bg-menuColors-950 focus:text-white'}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setSearch(e.target.value)
               setIsSearch(true)

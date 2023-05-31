@@ -24,7 +24,7 @@ function Settings(props: IProps) {
   }
 
   return (
-    <div className={'w-full h-full p-4 flex flex-col rounded-lg bg-menuColors-800 ' +
+    <div className={'w-full h-full p-4 flex flex-col rounded-lg bg-menuColors-950 ' +
       'max-sm: w-full max-sm:h-full'}
     >
       <div className={'flex flex-row justify-between'}>
@@ -44,12 +44,12 @@ function Settings(props: IProps) {
         {/* Two-column Layout */}
         <div className={'w-1/3 flex flex-col mr-2'}>
           {/* Theme */}
-          <div className={'flex p-2 mb-2 rounded-lg hover:cursor-pointer hover:bg-menuColors-700'} onClick={handlerTheme}>
+          <div className={'flex p-2 mb-2 rounded-lg hover:cursor-pointer hover:bg-tuna-900'} onClick={handlerTheme}>
             <Image src={'/sun.svg'} alt={'theme icon'} width={16} height={16} className={'mr-2'}/>
             <p className={'text-white'}>Theme</p>
           </div>
           {/* International */}
-          <div className={'flex p-2 mb-2 rounded-lg hover:cursor-pointer hover:bg-menuColors-700'} onClick={handlerGlobal}>
+          <div className={'flex p-2 mb-2 rounded-lg hover:cursor-pointer hover:bg-tuna-900'} onClick={handlerGlobal}>
             <Image src={'/globe.svg'} alt={'globe icon'} width={16} height={16} className={'mr-2'}/>
             <p className={'text-white'}>Global</p>
           </div>

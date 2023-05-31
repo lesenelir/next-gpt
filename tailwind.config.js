@@ -28,6 +28,23 @@ module.exports = {
           '950': '#202123',
           'chatGround': '#343540',
         },
+        tuna: {
+          '50': '#f4f5f7',
+          '100': '#e3e5ea',
+          '200': '#c9ccd8',
+          '300': '#a4aabc',
+          '400': '#777e99',
+          '500': '#5c637e',
+          '600': '#4f536b',
+          '700': '#44475a',
+          '800': '#3d3f4d',
+          '900': '#343540',
+          '950': '#21222b',
+        },
+        wordColor: {
+          'light': '#E3E3E8',
+          'dark': '#1F1F1F',
+        }
         // theme: {
         //   'bg-dark': 'var(--background-dark)',
         //   'bg-light': 'var(--background-light)',
