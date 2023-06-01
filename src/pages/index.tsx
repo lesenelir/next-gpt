@@ -31,7 +31,7 @@ function Home() {
             className={`${isMenuOpen ? 'block' : 'hidden'} fixed top-0 left-3/4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
             onClick={toggleMenu}
           >
-            <XIcon/>
+            <XIcon width={24} height={24}/>
           </div>
           <button className={`${theme === 'dark' ? 'text-white' : 'text-black'}`} onClick={toggleMenu}><ShrinkIcon/></button>
         </div>
