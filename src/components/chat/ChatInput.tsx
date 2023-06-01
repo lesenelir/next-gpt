@@ -13,7 +13,7 @@ function ChatInput() {
         cols={100}
         rows={1}
         className={`p-1 w-full rounded-lg mt-1 resize-none focus-visible:outline-none 
-        ${theme === 'dark' ? 'bg-tuna-900 text-white' : 'bg-white text-black'}`}
+        ${theme === 'dark' ? 'bg-tuna-900 text-wordColor-light' : 'bg-white text-black'}`}
         placeholder='Send a message...'
       />
       <button className={`absolute right-1 top-1 mr-2 mt-2 opacity-30 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>

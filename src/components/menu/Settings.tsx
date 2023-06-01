@@ -1,8 +1,10 @@
-import Image from "next/image"
 import {useState} from "react"
 import Divide from "@/components/utils/Divide"
 import ThemeMenu from "@/components/menu/ThemeMenu"
 import GlobalMenu from "@/components/menu/GlobalMenu"
+import XIcon from "@/components/icon/XIcon"
+import SunIcon from "@/components/icon/SunIcon";
+import GlobeIcon from "@/components/icon/GlobeIcon";
 
 interface IProps {
   setShowModalSettings: (showModalSettings: boolean) => void
@@ -28,13 +30,11 @@ function Settings(props: IProps) {
       'max-sm: w-full max-sm:h-full'}
     >
       <div className={'flex flex-row justify-between'}>
-        <p className={'text-white mb-2'}>Settings</p>
-        <Image
-          src={'/x.svg'}
-          alt={'x icon'}
-          width={20}
-          height={20}
-          className={'mb-1 hover:cursor-pointer'}
+        <p className={'text-wordColor-light mb-2'}>Settings</p>
+        <XIcon
+          width={22}
+          height={22}
+          className={'mb-1 text-wordColor-light hover:cursor-pointer'}
           onClick={() => setShowModalSettings(false)}
         />
       </div>
@@ -45,13 +45,13 @@ function Settings(props: IProps) {
         <div className={'w-1/3 flex flex-col mr-2'}>
           {/* Theme */}
           <div className={'flex p-2 mb-2 rounded-lg hover:cursor-pointer hover:bg-tuna-900'} onClick={handlerTheme}>
-            <Image src={'/sun.svg'} alt={'theme icon'} width={16} height={16} className={'mr-2'}/>
-            <p className={'text-white'}>Theme</p>
+            <SunIcon width={16} height={16} className={'mr-2 mt-1 text-wordColor-light'} />
+            <p className={'text-wordColor-light'}>Theme</p>
           </div>
           {/* International */}
           <div className={'flex p-2 mb-2 rounded-lg hover:cursor-pointer hover:bg-tuna-900'} onClick={handlerGlobal}>
-            <Image src={'/globe.svg'} alt={'globe icon'} width={16} height={16} className={'mr-2'}/>
-            <p className={'text-white'}>Global</p>
+            <GlobeIcon width={16} height={16} className={'mr-2 mt-1 text-wordColor-light'}/>
+            <p className={'text-wordColor-light'}>Global</p>
           </div>
         </div>
 
@@ -59,7 +59,7 @@ function Settings(props: IProps) {
           {showTheme && !showGlobal && (
             <>
               <div className={'text-white p-2 flex flex-col justify-between'}>
-                <p className={'mb-4'}>Theme</p>
+                <p className={'mb-4 text-wordColor-light'}>Theme</p>
                 <ThemeMenu/>
               </div>
             </>
@@ -68,7 +68,7 @@ function Settings(props: IProps) {
           {!showTheme && showGlobal && (
             <>
               <div className={'text-white p-2 flex flex-col justify-between'}>
-                <p className={'mb-4'}>Global</p>
+                <p className={'mb-4 text-wordColor-light'}>Global</p>
                 <GlobalMenu/>
               </div>
             </>

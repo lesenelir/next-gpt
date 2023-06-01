@@ -1,6 +1,10 @@
-import Image from "next/image"
 import {ChangeEvent, Dispatch, SetStateAction, useState} from "react"
 import {IChat} from "@/components/menu/Menu"
+import MessageIcon from "@/components/icon/MessageIcon"
+import EditIcon from "@/components/icon/EditIcon"
+import TrashIcon from "@/components/icon/TrashIcon"
+import CheckIcon from "@/components/icon/CheckIcon"
+import XIcon from "@/components/icon/XIcon"
 
 interface IProps {
   id: number
@@ -26,16 +30,10 @@ function ChatBox(props: IProps) {
   }
 
   return (
-    <div className={'flex flex-row justify-between relative mt-2 p-2 text-white rounded-lg hover:bg-tuna-900 hover:cursor-pointer'}>
+    <div className={'flex flex-row justify-between relative mt-2 p-2 text-wordColor-light rounded-lg hover:bg-tuna-900 hover:cursor-pointer'}>
       {/* content */}
       <div className={'flex'}>
-        <Image
-          src={'/message.svg'}
-          alt={'chat icon'}
-          width={16}
-          height={16}
-          className={'mr-2'}
-        />
+        <MessageIcon width={16} height={16} className={'mr-2 mt-1 text-wordColor-light'}/>
         <div className={'mr-2'}>
           {isEdit ? (
             <input
@@ -53,20 +51,11 @@ function ChatBox(props: IProps) {
       {/* icon */}
       {isEdit ? (
         <div className={'flex absolute right-0 top-0 mt-3'}>
-          <Image
-            src={'/check.svg'}
-            alt={'check icon'}
+          <CheckIcon width={16} height={16} className={'mr-2 text-wordColor-light'} onClick={handlerCheckClick} />
+          <XIcon
             width={16}
             height={16}
-            className={'mr-2 cursor-pointer'}
-            onClick={handlerCheckClick}
-          />
-          <Image
-            src={'/x.svg'}
-            alt={'x icon'}
-            width={16}
-            height={16}
-            className={'mr-2 cursor-pointer'}
+            className={'mr-2 text-wordColor-light'}
             onClick={() => {
               setInputValue(message)
               setIsEdit(!isEdit)
@@ -75,20 +64,11 @@ function ChatBox(props: IProps) {
         </div>
       ): (
         <div className={'flex absolute right-0 top-0 mt-3'}>
-          <Image
-            src={'/edit.svg'}
-            alt={'edit icon'}
+          <EditIcon width={16} height={16} className={'text-wordColor-light mr-2'} onClick={() => setIsEdit(!isEdit)}/>
+          <TrashIcon
             width={16}
             height={16}
-            className={'mr-2 cursor-pointer'}
-            onClick={() => setIsEdit(!isEdit)}
-          />
-          <Image
-            src={'/trash.svg'}
-            alt={'delete icon'}
-            width={16}
-            height={16}
-            className={'mr-2 cursor-pointer'}
+            className={'mr-1 text-wordColor-light'}
             onClick={() => {
               const newChatsArr: IChat[] = chatsArr.filter((chat: IChat) => chat.id !== id)
               setChatsArr(newChatsArr)

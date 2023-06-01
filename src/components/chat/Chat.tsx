@@ -8,8 +8,8 @@ function Chat() {
 
   return (
     <div className={`flex-1 flex flex-col justify-between items-center p-2
-    ${theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`
-    }>
+          ${theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`}
+    >
       {/* Content Area */}
       <div className={`flex flex-col items-center justify-center p-2 ${theme === 'dark' ? 'text-wordColor-light' : 'text-wordColor-dark'}`}>
         <h2 className={'text-2xl m-2'}>Welcome to Next Chatbot !</h2>

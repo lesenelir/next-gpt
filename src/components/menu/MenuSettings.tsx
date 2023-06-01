@@ -1,7 +1,7 @@
-import Image from "next/image"
 import {useState} from "react"
 import Settings from "@/components/menu/Settings"
 import ModalOverlay from "@/components/menu/ModalOverlay"
+import SettingsIcon from "@/components/icon/SettingsIcon"
 
 function MenuSettings() {
   const [showModalSettings, setShowModalSettings] = useState<boolean>(false)
@@ -19,14 +19,8 @@ function MenuSettings() {
         className={'flex flex-row rounded-lg mb-1 hover:bg-tuna-900 hover:cursor-pointer'}
         onClick={() => setShowModalSettings(!showModalSettings)}
       >
-        <Image
-          src={'/settings.svg'}
-          alt={'settings icon'}
-          width={16}
-          height={16}
-          className={'ml-2'}
-        />
-        <button className={'p-2 text-left text-white'}>Settings</button>
+        <SettingsIcon width={16} height={16} className={'ml-2 mt-3 text-wordColor-light'}/>
+        <button className={'p-2 text-left text-wordColor-light'}>Settings</button>
       </div>
     </>
   )

@@ -32,7 +32,7 @@ function Menu(props: IProps) {
       {/* Top */}
       <div className={'mb-4'}>
         <button
-          className={'p-2 border rounded-lg mb-2 w-full text-left text-white'}
+          className={`p-2 border rounded-lg mb-2 w-full text-left text-wordColor-light`}
           onClick={handlerAddChat}
         >+ New chat
         </button>
@@ -41,7 +41,7 @@ function Menu(props: IProps) {
             type="text"
             value={search}
             placeholder={'Search...'}
-            className={'p-2 rounded-lg w-full bg-menuColors-950 focus:text-white'}
+            className={'p-2 rounded-lg w-full bg-menuColors-950 focus:text-wordColor-light'}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setSearch(e.target.value)
               setIsSearch(true)
