@@ -40,6 +40,7 @@ module.exports = {
           '800': '#3d3f4d',
           '900': '#343540',
           '950': '#21222b',
+          'chatInput': '#40414E',
         },
         wordColor: {
           'light': '#E3E3E8',

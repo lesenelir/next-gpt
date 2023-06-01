@@ -32,11 +32,11 @@ function Menu(props: IProps) {
       {/* Top */}
       <div className={'mb-4'}>
         <button
-          className={`p-2 border rounded-lg mb-2 w-full text-left text-wordColor-light`}
+          className={`p-2 border border-gray-500 rounded-lg mb-2 w-full text-left text-wordColor-light`}
           onClick={handlerAddChat}
         >+ New chat
         </button>
-        <div className={'relative rounded-lg border'}>
+        <div className={'relative rounded-lg border border-gray-500'}>
           <input
             type="text"
             value={search}
