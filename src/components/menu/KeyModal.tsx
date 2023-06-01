@@ -1,6 +1,6 @@
 import {ChangeEvent, useState} from "react"
 import Divide from "@/components/utils/Divide"
-import XIcon from "@/components/icon/XIcon";
+import XIcon from "@/components/icon/XIcon"
 
 interface IProps {
   setShowModalKey: (showModalKey: boolean) => void
