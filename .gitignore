@@ -37,3 +37,4 @@ next-env.d.ts
 # editor file
 .idea
 .vscode
+.env
