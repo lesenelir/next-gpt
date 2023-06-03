@@ -5,6 +5,26 @@ import SendIcon from "@/components/icon/SendIcon"
 function ChatInput() {
   const {theme} = useContext(ThemeContext)
 
+  const handlerRequest = async () => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        message: '请介绍js语言的历史'
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    try {
+      const response = await fetch('/api/chat', options)
+      const data = await response.json()
+      console.log('client data ', data)
+    } catch (e) {
+      console.log('client error ', e)
+    }
+  }
+
   return (
     <div className={`relative w-3/5 border p-1 mb-4 rounded-lg drop-shadow-lg
         ${theme === 'dark' ? 'bg-tuna-chatInput border-gray-700' : 'bg-white'}`}
@@ -18,7 +38,10 @@ function ChatInput() {
         ${theme === 'dark' ? 'bg-tuna-chatInput text-wordColor-light' : 'bg-white text-black'}`}
         placeholder='Send a message...'
       />
-      <button className={`absolute right-1 top-1 mr-2 mt-2 opacity-30 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
+      <button
+        className={`absolute right-1 top-1 mr-2 mt-2 opacity-30 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+        onClick={handlerRequest}
+      >
         <SendIcon width={20} height={20} className={`mt-0.5 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`} />
       </button>
     </div>

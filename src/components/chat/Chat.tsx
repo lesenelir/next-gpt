@@ -17,6 +17,7 @@ function Chat() {
         <p>Next Chatbot allows you to plug in your GPT API key to provide services. </p>
       </div>
 
+      {/* Output */}
       <div className={'grow p-2'}></div>
 
       <ChatInput/>
