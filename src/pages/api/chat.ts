@@ -13,7 +13,7 @@ const handleSendMessage = async (req: NextApiRequest, res: NextApiResponse) => {
     body: JSON.stringify({
       model: 'gpt-3.5-turbo',
       messages: [{role: 'user', content: req.body.message}],
-      max_tokens: 100,
+      max_tokens: 1024,
     })
   }
 
