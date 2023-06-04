@@ -20,7 +20,13 @@ const handleSendMessage = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const response = await fetch('https://api.openai-proxy.com/v1/chat/completions', options)
     const data = await response.json()
-    return res.status(200).json({data})
+
+    if (response.ok) {
+      return res.status(200).json({data})
+    } else {
+      console.error('Error from the API: ', data)
+      return res.status(500).json({message: 'Error from the API.', error: data})
+    }
   } catch (e) {
     return res.status(500).json({message: 'Error connecting to OpenAI API.', e})
   }
