@@ -23,7 +23,7 @@ function Home() {
         <link rel="icon" href={`/favicon.ico`}/>
       </Head>
 
-      {/*Mobile*/}
+      {/* Mobile */}
       <div className={'h-screen max-sm:flex sm:hidden flex-col'}>
         <div className={`${theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`}>
           <Menu isMenuOpen={isMenuOpen}/>
@@ -39,7 +39,7 @@ function Home() {
         <Chat/>
       </div>
 
-      {/*PC*/}
+      {/* PC */}
       <div className={'h-screen max-sm:hidden sm:flex flex-row'}>
         <Menu isMenuOpen={isMenuOpen}/>
         <Chat/>
