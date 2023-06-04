@@ -1,15 +1,26 @@
-import {ChangeEvent, FormEvent, KeyboardEvent, useContext, useState} from "react"
+import {ChangeEvent, FormEvent, KeyboardEvent, useContext} from "react"
 import {ThemeContext} from "@/components/utils/ThemeProvider"
 import SendIcon from "@/components/icon/SendIcon"
+import {IMessage} from "@/components/chat/Chat"
 
-function ChatInput() {
-  const [answer, setAnswer] = useState<string>('')
-  const [inputValue, setInputValue] = useState<string>('')
+interface IProps {
+  answer: IMessage | null
+  setAnswer: (value: IMessage) => void
+  inputValue: string
+  setInputValue: (value: string) => void
+  setQuestion: (value: IMessage | null) => void
+  setIsChatting: (value: boolean) => void
+}
+
+function ChatInput(props: IProps) {
+  const {answer, setAnswer, inputValue, setInputValue, setQuestion, setIsChatting} = props
   const {theme} = useContext(ThemeContext)
 
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
+    setQuestion({role: 'user', content: inputValue})
     setInputValue('')
+    setIsChatting(true)
     const options = {
       method: 'POST',
       body: JSON.stringify({
@@ -23,7 +34,7 @@ function ChatInput() {
     try {
       const response = await fetch('/api/chat', options)
       const data = await response.json()
-      setAnswer(data.data.choices[0].message)
+      setAnswer(data?.data?.choices[0].message)
     } catch (e) {
       console.log('client error ', e)
     }
@@ -45,7 +56,7 @@ function ChatInput() {
           value={inputValue}
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setInputValue(e.target.value)}
           onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
+            if (e.key === 'Enter' && !e.shiftKey && inputValue) {
               e.preventDefault()
               handlerRequest(e).then(() => console.log())
             }

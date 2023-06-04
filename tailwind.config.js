@@ -1,17 +1,17 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
+const colors = require("tailwindcss/colors")
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
       },
       colors: {
         menuColors: {
@@ -26,7 +26,7 @@ module.exports = {
           '800': '#35383a',
           '900': '#2f3032',
           '950': '#202123',
-          'chatGround': '#343540',
+          'chatGround': '#343540'
         },
         tuna: {
           '50': '#f4f5f7',
@@ -40,22 +40,18 @@ module.exports = {
           '800': '#3d3f4d',
           '900': '#343540',
           '950': '#21222b',
-          'chatInput': '#40414E',
+          'chatInput': '#40414E'
         },
         wordColor: {
           'light': '#E3E3E8',
-          'dark': '#1F1F1F',
+          'dark': '#1F1F1F'
+        },
+        botBackGround: {
+          'light': '#F7F7F8',
+          'userDark': '#444653'
         }
-        // theme: {
-        //   'bg-dark': 'var(--background-dark)',
-        //   'bg-light': 'var(--background-light)',
-        //   'input-dark': 'var(--input-dark)',
-        //   'input-light': 'var(--input-light)',
-        //   'text-dark': 'var(--text-dark)',
-        //   'text-light': 'var(--text-light)',
-        // }
-      },
-    },
+      }
+    }
   },
-  plugins: [],
+  plugins: []
 }
