@@ -1,6 +1,5 @@
 import Head from "next/head"
 import Menu from "@/components/menu/Menu"
-// import Chat from "@/components/chat/Chat"
 import Divide from "@/components/utils/Divide"
 import ShrinkIcon from "@/components/icon/ShrinkIcon"
 import XIcon from "@/components/icon/XIcon"
