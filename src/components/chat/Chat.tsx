@@ -32,19 +32,23 @@ function Chat() {
   const chatList = previousChat.map((chat, index) => {
     if (chat.role === 'user') {
       return (
-        <div key={index} className={`w-full p-8 ${theme === 'dark' ? 'bg-botBackGround-userDark text-wordColor-light' : 'text-wordColor-dark'}`}>
-          <div className={'flex flex-row sm:ml-60'}>
+        <div key={index} className={`w-full p-8 flex flex-row ${theme === 'dark' ? 'bg-botBackGround-userDark text-wordColor-light' : 'text-wordColor-dark'}`}>
+          <div className={'sm:ml-60'}>
             <UserIcon/>
-            <p className={'ml-2'}>{chat.content}</p>
+          </div>
+          <div className={'sm:mr-60'}>
+            <p className={'ml-4'}>{chat.content}</p>
           </div>
         </div>
       )
     } else if (chat.role === 'assistant') {
       return (
-        <div key={index} className={`w-full p-8 ${theme === 'dark' ? 'text-wordColor-light' : 'bg-botBackGround-light text-wordColor-dark'}  `}>
-          <div className={'flex flex-row sm:ml-60'}>
+        <div key={index} className={`w-full flex flex-row p-8 ${theme === 'dark' ? 'text-wordColor-light' : 'bg-botBackGround-light text-wordColor-dark'}`}>
+          <div className={'sm:ml-60'}>
             <BotIcon/>
-            <p className={'ml-2'}>{chat.content}</p>
+          </div>
+          <div className={'sm:mr-60'}>
+            <p className={'ml-4'}>{chat.content}</p>
           </div>
         </div>
       )

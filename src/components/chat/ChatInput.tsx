@@ -43,7 +43,7 @@ function ChatInput(props: IProps) {
   console.log(answer)
 
   return (
-    <div className={`relative w-3/5 border p-1 mb-4 rounded-lg drop-shadow-lg
+    <div className={`relative w-3/5 border p-1 rounded-lg drop-shadow-lg
         ${theme === 'dark' ? 'bg-tuna-chatInput border-gray-700' : 'bg-white'}`}
     >
       <form onSubmit={handlerRequest}>

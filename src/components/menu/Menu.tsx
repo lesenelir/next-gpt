@@ -1,10 +1,12 @@
 import Image from "next/image"
-import {ChangeEvent, useState} from "react"
+import {ChangeEvent, useContext, useState} from "react"
 import Divide from "@/components/utils/Divide"
 import ChatBox from "@/components/menu/ChatBox"
 import MenuClear from "@/components/menu/MenuClear"
 import MenuKey from "@/components/menu/MenuKey"
 import MenuSettings from "@/components/menu/MenuSettings"
+import ColumnIcon from "@/components/icon/ColumnIcon"
+import {ThemeContext} from "@/components/utils/ThemeProvider"
 
 export interface IChat {
   id: number
@@ -13,29 +15,57 @@ export interface IChat {
 
 interface IProps {
   isMenuOpen: boolean
+  setIsMenuOpen: (isMenuOpen: boolean) => void
 }
 
 function Menu(props: IProps) {
-  const {isMenuOpen} = props
+  const {isMenuOpen, setIsMenuOpen} = props
   const [chats, setChats] = useState<IChat[]>([])
   const [search, setSearch] = useState<string>('')
   const [isSearch, setIsSearch] = useState<boolean>(false)
+  const {theme} = useContext(ThemeContext)
 
   const handlerAddChat = () => {
     setChats((prevState: IChat[]) => [{id: Math.random(), message: 'new Chat'}, ...prevState])
   }
 
+  if (!isMenuOpen) {
+    return (
+      <div
+        className={'max-sm:hidden h-10 p-2 border border-gray-300 m-2 rounded-lg cursor-pointer ' +
+          `${theme === 'dark' ? 'text-wordColor-light hover:bg-menuColors-900' : 'text-wordColor-dark hover:bg-menuColors-50'} `}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        <ColumnIcon width={20} height={20}/>
+      </div>
+    )
+  }
+
   return (
     <div className={`h-screen flex flex-col justify-between bg-menuColors-950 p-2 w-64
-    max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:z-10 max-sm:w-3/4 max-sm:flex max-sm:flex-col
-    ${isMenuOpen ? 'max-sm:block': 'max-sm:hidden'}`}>
+          max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:z-10 max-sm:w-3/4 max-sm:flex max-sm:flex-col
+          ${isMenuOpen ? 'sm:flex flex-col max-sm:block': 'sm:hidden max-sm:hidden'}`}
+    >
       {/* Top */}
       <div className={'mb-4'}>
-        <button
-          className={`p-2 border border-gray-500 rounded-lg mb-2 w-full text-left text-wordColor-light`}
-          onClick={handlerAddChat}
-        >+ New chat
-        </button>
+        {/*<button*/}
+        {/*  className={`p-2 border border-gray-500 rounded-lg mb-2 w-full text-left text-wordColor-light`}*/}
+        {/*  onClick={handlerAddChat}*/}
+        {/*>+ New chat*/}
+        {/*</button>*/}
+        <div className={'flex flex-row'}>
+          <button
+            className={`p-2 border border-gray-500 rounded-lg mb-2 w-4/5 text-left text-wordColor-light`}
+            onClick={handlerAddChat}
+          >+ New chat
+          </button>
+          <div
+            className={'p-2 border border-gray-500 ml-2 mb-2 rounded-lg text-wordColor-light cursor-pointer hover:bg-menuColors-900'}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            <ColumnIcon width={20} height={20}/>
+          </div>
+        </div>
         <div className={'relative rounded-lg border border-gray-500'}>
           <input
             type="text"

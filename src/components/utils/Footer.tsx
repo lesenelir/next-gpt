@@ -7,7 +7,7 @@ function Footer() {
 
   return (
     <>
-      <footer className={`flex flex-row ${theme === 'dark' ? 'text-wordColor-light' : 'text-wordColor-dark'}`}>
+      <footer className={`flex flex-row m-2 ${theme === 'dark' ? 'text-wordColor-light' : 'text-wordColor-dark'}`}>
         <p className={'mr-2'}>From © Lesenelir Zhou</p>
         <a href={'https://github.com/lesenelir'} target={'_blank'} className={'m-auto'}>
           <GithubIcon/>
