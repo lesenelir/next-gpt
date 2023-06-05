@@ -19,12 +19,12 @@ function Chat() {
   const {theme} = useContext(ThemeContext)
 
   useEffect(() => {
-    if (answer) setPreviousChat(previousChat => [...previousChat, answer!])
-  }, [answer])
-
-  useEffect(() => {
     if (question) setPreviousChat(previousChat => [...previousChat, question!])
   }, [question])
+
+  useEffect(() => {
+    if (answer) setPreviousChat(previousChat => [...previousChat, answer!])
+  }, [answer])
 
   console.log(previousChat)
 
@@ -81,6 +81,7 @@ function Chat() {
           inputValue={inputValue} setInputValue={setInputValue}
           setQuestion={setQuestion}
           setIsChatting={setIsChatting}
+          setPreviousChat={setPreviousChat}
         />
         <Footer/>
       </div>

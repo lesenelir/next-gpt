@@ -1,19 +1,20 @@
-import {ChangeEvent, FormEvent, KeyboardEvent, useContext} from "react"
+import {ChangeEvent, Dispatch, FormEvent, KeyboardEvent, SetStateAction, useContext} from "react"
 import {ThemeContext} from "@/components/utils/ThemeProvider"
 import SendIcon from "@/components/icon/SendIcon"
 import {IMessage} from "@/components/chat/Chat"
 
 interface IProps {
   answer: IMessage | null
-  setAnswer: (value: IMessage) => void
+  setAnswer: Dispatch<SetStateAction<IMessage | null>>
   inputValue: string
-  setInputValue: (value: string) => void
-  setQuestion: (value: IMessage | null) => void
-  setIsChatting: (value: boolean) => void
+  setInputValue: Dispatch<SetStateAction<string>>
+  setQuestion: Dispatch<SetStateAction<IMessage | null>>
+  setIsChatting: Dispatch<SetStateAction<boolean>>
+  setPreviousChat: Dispatch<SetStateAction<IMessage[]>>
 }
 
 function ChatInput(props: IProps) {
-  const {answer, setAnswer, inputValue, setInputValue, setQuestion, setIsChatting} = props
+  const {answer, setAnswer, inputValue, setInputValue, setQuestion, setIsChatting, setPreviousChat} = props
   const {theme} = useContext(ThemeContext)
 
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
@@ -21,6 +22,7 @@ function ChatInput(props: IProps) {
     setQuestion({role: 'user', content: inputValue})
     setInputValue('')
     setIsChatting(true)
+    setAnswer({role: 'assistant', content: 'Loading...'})
     const options = {
       method: 'POST',
       body: JSON.stringify({
@@ -34,6 +36,7 @@ function ChatInput(props: IProps) {
     try {
       const response = await fetch('/api/chat', options)
       const data = await response.json()
+      setPreviousChat((previousChat: IMessage[]) => previousChat.slice(0, previousChat.length - 1)) // delete loading message
       setAnswer(data?.data?.choices[0].message)
     } catch (e) {
       console.log('client error ', e)
