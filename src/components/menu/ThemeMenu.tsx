@@ -3,7 +3,6 @@ import {useTranslation} from "next-i18next"
 
 import {ThemeContext} from "@/components/utils/ThemeProvider"
 
-
 function ThemeMenu() {
   const {setTheme} = useContext(ThemeContext)
   const {t} = useTranslation('common')

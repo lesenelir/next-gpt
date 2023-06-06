@@ -1,5 +1,4 @@
-import {ReactNode} from "react"
-import {MouseEvent} from "react"
+import {ReactNode, MouseEvent} from "react"
 
 interface IProps {
   children: ReactNode

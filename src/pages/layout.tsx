@@ -1,10 +1,11 @@
+import {ReactNode, useContext, useState} from "react"
 import Head from "next/head"
+
+import {ThemeContext} from "@/components/utils/ThemeProvider"
 import Menu from "@/components/menu/Menu"
 import Divide from "@/components/utils/Divide"
 import ShrinkIcon from "@/components/icon/ShrinkIcon"
 import XIcon from "@/components/icon/XIcon"
-import {ReactNode, useContext, useState} from "react"
-import {ThemeContext} from "@/components/utils/ThemeProvider"
 
 interface IProps {
   children: ReactNode

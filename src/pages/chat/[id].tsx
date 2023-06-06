@@ -14,9 +14,11 @@ export const getServerSideProps: GetServerSideProps = async ({locale}) => {
 
 function ChatPage() {
   return (
-    <Layout>
-      <Chat/>
-    </Layout>
+    <>
+      <Layout>
+        <Chat/>
+      </Layout>
+    </>
   )
 }
 

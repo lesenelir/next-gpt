@@ -5,7 +5,6 @@ interface IProps {
   onClick?: () => void
 }
 
-
 function TrashIcon(props: IProps) {
   const {width, height, className, onClick} = props
 
