@@ -1,11 +1,9 @@
-import {ChangeEvent, Dispatch, FormEvent, KeyboardEvent, SetStateAction, useContext} from "react"
+import {ChangeEvent, Dispatch, FormEvent, KeyboardEvent, SetStateAction, useContext, useState} from "react"
 import {ThemeContext} from "@/components/utils/ThemeProvider"
 import SendIcon from "@/components/icon/SendIcon"
 import {IMessage} from "@/components/chat/Chat"
 
 interface IProps {
-  inputValue: string
-  setInputValue: Dispatch<SetStateAction<string>>
   setAnswer: Dispatch<SetStateAction<IMessage | null>>
   setQuestion: Dispatch<SetStateAction<IMessage | null>>
   setIsChatting: Dispatch<SetStateAction<boolean>>
@@ -13,7 +11,8 @@ interface IProps {
 }
 
 function ChatInput(props: IProps) {
-  const {inputValue, setInputValue, setAnswer, setQuestion, setIsChatting, setPreviousChat} = props
+  const {setAnswer, setQuestion, setIsChatting, setPreviousChat} = props
+  const [inputValue, setInputValue] = useState<string>('')
   const {theme} = useContext(ThemeContext)
 
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {

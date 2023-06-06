@@ -13,7 +13,6 @@ export interface IMessage {
 function Chat() {
   const [question, setQuestion] = useState<IMessage | null>(null)
   const [answer, setAnswer] = useState<IMessage | null>(null)
-  const [inputValue, setInputValue] = useState<string>('')
   const [isChatting, setIsChatting] = useState<boolean>(false)
   const [previousChat, setPreviousChat] = useState<IMessage[]>([])
   const {theme} = useContext(ThemeContext)
@@ -77,7 +76,6 @@ function Chat() {
 
       <div className={'w-full flex flex-col justify-center items-center'}>
         <ChatInput
-          inputValue={inputValue} setInputValue={setInputValue}
           setAnswer={setAnswer}
           setQuestion={setQuestion}
           setIsChatting={setIsChatting}
