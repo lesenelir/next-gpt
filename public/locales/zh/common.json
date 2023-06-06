@@ -1,0 +1,29 @@
+{
+  "chat": {
+    "title": "欢迎来到 Next Chatbot !",
+    "content1": "这是一个主要用于学习的开源项目",
+    "content2": "Next Chatbot 允许你添加自己的 GPT API 从而提供服务.",
+    "InputPlaceholder": "在此输入内容..."
+  },
+  "footer": "来自",
+  "menu": {
+    "newChat": "+ 新建会话",
+    "createChat": "会话标题",
+    "searchPlaceholder": "搜索...",
+    "clear": "清除所有会话",
+    "APIKey": "OpenAI密钥",
+    "settings": "设置",
+    "modal": {
+      "settings": "设置",
+      "theme": "主题",
+      "dark": "暗黑模式",
+      "light": "明亮模式",
+      "global": "国际化",
+      "english": "英语",
+      "chinese": "中文",
+      "apiKey": "API密钥",
+      "keyContent": "OpenAI API密钥",
+      "save": "保存"
+    }
+  }
+}

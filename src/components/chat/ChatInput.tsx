@@ -1,7 +1,9 @@
 import {ChangeEvent, Dispatch, FormEvent, KeyboardEvent, SetStateAction, useContext, useState} from "react"
+import {useTranslation} from "next-i18next"
+
 import {ThemeContext} from "@/components/utils/ThemeProvider"
-import SendIcon from "@/components/icon/SendIcon"
 import {IMessage} from "@/components/chat/Chat"
+import SendIcon from "@/components/icon/SendIcon"
 
 interface IProps {
   setAnswer: Dispatch<SetStateAction<IMessage | null>>
@@ -14,6 +16,7 @@ function ChatInput(props: IProps) {
   const {setAnswer, setQuestion, setIsChatting, setPreviousChat} = props
   const [inputValue, setInputValue] = useState<string>('')
   const {theme} = useContext(ThemeContext)
+  const {t} = useTranslation('common')
 
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
@@ -49,7 +52,7 @@ function ChatInput(props: IProps) {
         <textarea
           name="message"
           id="chat-input"
-          placeholder='Send a message...'
+          placeholder={t('chat.InputPlaceholder')!}
           cols={100}
           rows={1}
           value={inputValue}

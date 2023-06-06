@@ -1,5 +1,8 @@
+import {useTranslation} from "next-i18next"
+
 import {IChat} from "@/components/menu/Menu"
 import TrashIcon from "@/components/icon/TrashIcon"
+
 
 interface IProps {
   setChats: (chats: IChat[]) => void
@@ -7,6 +10,7 @@ interface IProps {
 
 function MenuClear(props: IProps) {
   const {setChats} = props
+  const {t} = useTranslation('common')
 
   return (
     <div
@@ -14,7 +18,7 @@ function MenuClear(props: IProps) {
       onClick={() => {setChats([])}}
     >
       <TrashIcon width={16} height={16} className={'ml-2 mt-3 text-wordColor-light'}/>
-      <button className={'p-2 text-left text-wordColor-light'}>Clear Conversations</button>
+      <button className={'p-2 text-left text-wordColor-light'}>{t('menu.clear')}</button>
     </div>
   )
 }

@@ -1,4 +1,6 @@
 import {ChangeEvent, useState} from "react"
+import {useTranslation} from "next-i18next"
+
 import Divide from "@/components/utils/Divide"
 import XIcon from "@/components/icon/XIcon"
 
@@ -9,12 +11,13 @@ interface IProps {
 function KeyModal(props: IProps) {
   const {setShowModalKey} = props
   const [inputValue, setInputValue] = useState<string>('')
+  const {t} = useTranslation('common')
 
   return (
     <>
       <div className={'w-full h-full p-4 flex flex-col rounded-lg bg-menuColors-950'}>
         <div className={'flex flex-row justify-between'}>
-          <p className={'text-wordColor-light mb-2'}>API Key</p>
+          <p className={'text-wordColor-light mb-2'}>{t('menu.modal.apiKey')}</p>
           <XIcon
             width={22}
             height={22}
@@ -25,7 +28,7 @@ function KeyModal(props: IProps) {
         <Divide/>
 
         <div className={'flex flex-col mt-2 text-wordColor-light'}>
-          <p>OpenAI API Key:</p>
+          <p>{t('menu.modal.keyContent')}:</p>
           <div className={'flex flex-row justify-between mt-2'}>
             <input
               type="text"
@@ -33,7 +36,7 @@ function KeyModal(props: IProps) {
               onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
               className={'w-3/4 text-wordColor-light border border-gray-500 mt-2 p-2 rounded-lg bg-menuColors-900'}
             />
-            <button className={'w-1/5 h-3/4 mt-2 rounded-lg bg-emerald-800 hover:bg-emerald-700'}>Save</button>
+            <button className={'w-1/5 h-3/4 mt-2 rounded-lg bg-emerald-800 hover:bg-emerald-700'}>{t('menu.modal.save')}</button>
           </div>
         </div>
       </div>

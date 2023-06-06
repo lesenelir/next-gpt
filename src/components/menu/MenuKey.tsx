@@ -1,10 +1,13 @@
 import {useState} from "react"
+import {useTranslation} from "next-i18next"
+
 import ModalOverlay from "@/components/menu/ModalOverlay"
 import KeyModal from "@/components/menu/KeyModal"
 import KeyIcon from "@/components/icon/KeyIcon"
 
 function MenuKey() {
   const [showModalKey, setShowModalKey] = useState<boolean>(false)
+  const {t} = useTranslation('common')
 
   return (
     <>
@@ -19,7 +22,7 @@ function MenuKey() {
         onClick={() => setShowModalKey(true)}
       >
         <KeyIcon width={16} height={16} className={'ml-2 mt-3 text-wordColor-light'}/>
-        <button className={'p-2 text-left text-wordColor-light'}>OpenAI key</button>
+        <button className={'p-2 text-left text-wordColor-light'}>{t('menu.APIKey')}</button>
       </div>
     </>
   )

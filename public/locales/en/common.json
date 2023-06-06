@@ -1,0 +1,29 @@
+{
+  "chat": {
+    "title": "Welcome to Next Chatbot !",
+    "content1": "It's an open-source project primarily aimed at learning.",
+    "content2": "Next Chatbot allows you to plug in your GPT API key to provide services.",
+    "InputPlaceholder": "Type your message here..."
+  },
+  "footer": "From",
+  "menu": {
+    "newChat": "+ New Chat",
+    "createChat": "Chat Title",
+    "searchPlaceholder": "Search...",
+    "clear": "Clear Conversations",
+    "APIKey": "OpenAI Key",
+    "settings": "Settings",
+    "modal": {
+      "settings": "Settings",
+      "theme": "Theme",
+      "dark": "Dark",
+      "light": "Light",
+      "global": "Global",
+      "english": "English",
+      "chinese": "Chinese",
+      "apiKey": "API Key",
+      "keyContent": "OpenAI API Key",
+      "save": "Save"
+    }
+  }
+}

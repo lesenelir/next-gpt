@@ -1,12 +1,14 @@
 import Image from "next/image"
 import {ChangeEvent, useContext, useState} from "react"
+import {useTranslation} from "next-i18next"
+
+import {ThemeContext} from "@/components/utils/ThemeProvider"
 import Divide from "@/components/utils/Divide"
 import ChatBox from "@/components/menu/ChatBox"
 import MenuClear from "@/components/menu/MenuClear"
 import MenuKey from "@/components/menu/MenuKey"
 import MenuSettings from "@/components/menu/MenuSettings"
 import ColumnIcon from "@/components/icon/ColumnIcon"
-import {ThemeContext} from "@/components/utils/ThemeProvider"
 
 export interface IChat {
   id: number
@@ -24,9 +26,10 @@ function Menu(props: IProps) {
   const [search, setSearch] = useState<string>('')
   const [isSearch, setIsSearch] = useState<boolean>(false)
   const {theme} = useContext(ThemeContext)
+  const {t} = useTranslation('common')
 
   const handlerAddChat = () => {
-    setChats((prevState: IChat[]) => [{id: Math.random(), message: 'new Chat'}, ...prevState])
+    setChats((prevState: IChat[]) => [{id: Math.random(), message: 'New Chat'}, ...prevState])
   }
 
   if (!isMenuOpen) {
@@ -52,7 +55,7 @@ function Menu(props: IProps) {
           <button
             className={`p-2 border border-gray-500 rounded-lg mb-2 w-4/5 text-left text-wordColor-light`}
             onClick={handlerAddChat}
-          >+ New chat
+          >{t('menu.newChat')}
           </button>
           <div
             className={'p-2 border border-gray-500 ml-2 mb-2 rounded-lg text-wordColor-light cursor-pointer hover:bg-menuColors-900'}
@@ -65,7 +68,7 @@ function Menu(props: IProps) {
           <input
             type="text"
             value={search}
-            placeholder={'Search...'}
+            placeholder={t('menu.searchPlaceholder')!}
             className={'p-2 rounded-lg w-full bg-menuColors-950 focus:text-wordColor-light'}
             onChange={(e: ChangeEvent<HTMLInputElement>) => {
               setSearch(e.target.value)

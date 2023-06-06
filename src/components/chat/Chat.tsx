@@ -1,9 +1,11 @@
 import {useContext, useEffect, useState} from "react"
+import {useTranslation} from "next-i18next"
+
+import {ThemeContext} from "@/components/utils/ThemeProvider"
 import ChatInput from "@/components/chat/ChatInput"
 import Footer from "@/components/utils/Footer"
 import UserIcon from "@/components/icon/UserIcon"
 import BotIcon from "@/components/icon/BotIcon"
-import {ThemeContext} from "@/components/utils/ThemeProvider"
 
 export interface IMessage {
   role: string
@@ -16,6 +18,7 @@ function Chat() {
   const [isChatting, setIsChatting] = useState<boolean>(false)
   const [previousChat, setPreviousChat] = useState<IMessage[]>([])
   const {theme} = useContext(ThemeContext)
+  const {t} = useTranslation('common')
 
   useEffect(() => {
     if (question) setPreviousChat(previousChat => [...previousChat, question!])
@@ -64,9 +67,9 @@ function Chat() {
         <div className={`w-full flex-1 flex flex-col justify-center items-center mb-4 p-4
             ${theme === 'dark' ? 'text-wordColor-light' : 'text-wordColor-dark'}`}
         >
-          <h2 className={'text-2xl m-4'}>Welcome to Next Chatbot !</h2>
-          <p className={'max-sm: text-center'}>It&apos;s an open-source project primarily aimed at learning.</p>
-          <p className={'max-sm: text-center'}>Next Chatbot allows you to plug in your GPT API key to provide services. </p>
+          <h2 className={'text-2xl p-2'}>{t('chat.title')}</h2>
+          <p className={'max-sm: text-center p-1'}>{t('chat.content1')}</p>
+          <p className={'max-sm: text-center'}>{t('chat.content2')}</p>
         </div>
       ) : (
         <div className={'w-full overflow-auto flex-1 flex flex-col'}>
