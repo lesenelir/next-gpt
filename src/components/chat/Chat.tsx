@@ -77,8 +77,8 @@ function Chat() {
 
       <div className={'w-full flex flex-col justify-center items-center'}>
         <ChatInput
-          answer={answer} setAnswer={setAnswer}
           inputValue={inputValue} setInputValue={setInputValue}
+          setAnswer={setAnswer}
           setQuestion={setQuestion}
           setIsChatting={setIsChatting}
           setPreviousChat={setPreviousChat}

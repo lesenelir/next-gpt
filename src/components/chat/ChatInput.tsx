@@ -4,17 +4,16 @@ import SendIcon from "@/components/icon/SendIcon"
 import {IMessage} from "@/components/chat/Chat"
 
 interface IProps {
-  answer: IMessage | null
-  setAnswer: Dispatch<SetStateAction<IMessage | null>>
   inputValue: string
   setInputValue: Dispatch<SetStateAction<string>>
+  setAnswer: Dispatch<SetStateAction<IMessage | null>>
   setQuestion: Dispatch<SetStateAction<IMessage | null>>
   setIsChatting: Dispatch<SetStateAction<boolean>>
   setPreviousChat: Dispatch<SetStateAction<IMessage[]>>
 }
 
 function ChatInput(props: IProps) {
-  const {answer, setAnswer, inputValue, setInputValue, setQuestion, setIsChatting, setPreviousChat} = props
+  const {inputValue, setInputValue, setAnswer, setQuestion, setIsChatting, setPreviousChat} = props
   const {theme} = useContext(ThemeContext)
 
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
@@ -42,8 +41,6 @@ function ChatInput(props: IProps) {
       console.log('client error ', e)
     }
   }
-
-  console.log(answer)
 
   return (
     <div className={`relative w-3/5 border p-1 rounded-lg drop-shadow-lg
