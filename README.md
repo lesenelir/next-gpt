@@ -11,13 +11,17 @@ Additionally, Typescript has been incorporated into the entire project.
 
 ## Features
 
-- [ ] Website UI/UX accomplished with Tailwindcss
-  - [ ] Website components (Menu, Chat, etc.) 
-  - [ ] Dark mode and Light mode
-  - [ ] Mobile support
-  - [ ] i18n Internationalization
+- [x] Website UI/UX accomplished with Tailwindcss
+  - [x] Website components (Menu, Chat, etc.) 
+  - [x] Dark mode and Light mode
+  - [x] Mobile support
+  - [x] i18n Internationalization
 
-- [ ] GPT-3 API integration
+- [x] GPT-3 API integration
+
+- [ ] Database integration
+  - [ ] Mysql
+  - [ ] Redis 
 
 - [ ] Login authentication
 
