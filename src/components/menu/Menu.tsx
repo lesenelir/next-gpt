@@ -48,11 +48,6 @@ function Menu(props: IProps) {
     >
       {/* Top */}
       <div className={'mb-4'}>
-        {/*<button*/}
-        {/*  className={`p-2 border border-gray-500 rounded-lg mb-2 w-full text-left text-wordColor-light`}*/}
-        {/*  onClick={handlerAddChat}*/}
-        {/*>+ New chat*/}
-        {/*</button>*/}
         <div className={'flex flex-row'}>
           <button
             className={`p-2 border border-gray-500 rounded-lg mb-2 w-4/5 text-left text-wordColor-light`}
