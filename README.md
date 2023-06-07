@@ -20,8 +20,7 @@ Additionally, Typescript has been incorporated into the entire project.
 - [x] GPT-3 API integration
 
 - [ ] Database integration
-  - [ ] Mysql
-  - [ ] Redis 
+  - [ ] PostgreSQL
 
 - [ ] Login authentication
 
