@@ -8,7 +8,6 @@ This project is a learning experience for me to learn Nextjs Pages Router rather
 I am also using this project to learn how to build a project with Nextjs and Tailwindcss.
 Additionally, Typescript has been incorporated into the entire project.
 
-
 ## Features
 
 - [x] Website UI/UX accomplished with Tailwindcss
