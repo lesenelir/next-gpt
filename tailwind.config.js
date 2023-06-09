@@ -49,6 +49,37 @@ module.exports = {
         botBackGround: {
           'light': '#F7F7F8',
           'userDark': '#444653'
+        },
+        canvas: {
+          'bg-1': '#235354',
+          'text-1': '#FFFFDF',
+          'bg-2': '#240647',
+          'text-2': '#D5FDFF',
+          'bg-3': '#20361B',
+          'text-3': '#F5C3FC',
+          'bg-4': '#3A083E',
+          'text-4': '#D4FDCC',
+          'bg-5': '#343324',
+          'text-5': '#FFFFDF',
+          'bg-6': '#235354',
+          'text-6': '#FFFFDF',
+          'bg-7': '#E7F1FE',
+          'text-7': '#3E46F6',
+          'bg-8': '#F9FEDE',
+          'text-8': '#A765F5',
+          'bg-9': '#E0FDDB',
+          'text-9': '#A765F5',
+          'bg-10': '#FFFFDF',
+          'text-10': '#235354',
+          'bg-11': '#F8D9FC',
+          'text-11': '#0610A5',
+          'bg-12': '#FFFEBE',
+          'text-12': '#081DF5',
+          'bg-13': '#D5FDFF',
+          'text-13': '#A765F5',
+          'bg-14': '#00012C',
+          'text-14': '#FFFFDF',
+
         }
       }
     }
