@@ -1,5 +1,5 @@
 import Image from "next/image"
-import {ChangeEvent, useContext, useState} from "react"
+import React, {ChangeEvent, useContext, useState} from "react"
 import {useTranslation} from "next-i18next"
 
 import {ThemeContext} from "@/components/utils/ThemeProvider"
@@ -9,6 +9,7 @@ import MenuClear from "@/components/menu/MenuClear"
 import MenuKey from "@/components/menu/MenuKey"
 import MenuSettings from "@/components/menu/MenuSettings"
 import ColumnIcon from "@/components/icon/ColumnIcon"
+import MenuLogout from "@/components/menu/MenuLogout"
 
 export interface IChat {
   id: number
@@ -107,6 +108,7 @@ function Menu(props: IProps) {
         <MenuClear setChats={setChats}/>
         <MenuKey/>
         <MenuSettings/>
+        <MenuLogout/>
       </div>
     </div>
   )
