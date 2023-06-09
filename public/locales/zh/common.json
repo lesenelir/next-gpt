@@ -13,6 +13,7 @@
     "clear": "清除所有会话",
     "APIKey": "OpenAI密钥",
     "settings": "设置",
+    "logout": "退出",
     "modal": {
       "settings": "设置",
       "theme": "主题",
