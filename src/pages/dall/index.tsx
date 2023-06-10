@@ -16,7 +16,7 @@ function DallMainPage() {
       <div>
         <p className={'mb-2'}>This project is under development...</p>
         <button
-          className={'p-2 text-sm rounded-lg bg-menuColors-100 hover:opacity-80 hover:cursor-pointer'}
+          className={'p-2 text-sm rounded-lg border border-gray-400 bg-menuColors-100 hover:opacity-80 hover:cursor-pointer'}
           onClick={() => router.back()}
         >Back
         </button>
