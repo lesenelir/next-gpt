@@ -24,35 +24,6 @@ Additionally, Typescript has been incorporated into the entire project.
 
 - [ ] Login authentication
 
-
-## Run
-
-- Get the repository code
-
-```
-git clone git@github.com:lesenelir/next-gpt.git
-```
-
-- Installing dependencies
-
-```
-npm i
-```
-
-- Create a `.env` file in the root directory and add the following content
-
-```
-OPENAI_API_KEY=Your_OpenAI_API_KEY
-```
-
-Note: If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
-
-- Run
-
-```
-npm run dev
-```
-
 ---
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
