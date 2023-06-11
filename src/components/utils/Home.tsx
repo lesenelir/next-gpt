@@ -50,92 +50,102 @@ function Home() {
   }, [])
 
   return (
-    <div className={`h-screen flex flex-col justify-between items-center
+    <>
+      {/* PC sm === 大于等于640px 电脑  ; max-sm === 小于等于640px 手机 */}
+      <div className={`h-screen flex flex-col justify-between items-center
           bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex}`}
-    >
+      >
+        {/* PC Navbar */}
+        {/* sm:flex max-sm:hidden => 当大于等于640px是flex，当最大的最小宽度是小于等于640px是hidden */}
+        <div className={'w-full sm:flex max-sm:hidden flex-row p-6 text-lg'}>
+          <LZIcon width={60} height={60} className={`-mt-4`} />
+          <p className={'w-1/5 text-xl p-1 flex flex-row items-center'}>Lesenelir AI Base</p>
+          <div className={'w-full flex flex-row justify-between '}>
+            <ul className={'flex flex-row gap-8'}>
+              <li className={'p-1 flex flex-row items-center cursor-pointer hover:underline underline-offset-4'}>
+                Research
+                <ChevronDownIcon width={20} height={20} className={'ml-1'}/>
+              </li>
+              <li className={'p-1 flex flex-row items-center cursor-pointer hover:underline underline-offset-4'}>
+                Product
+                <ChevronDownIcon width={20} height={20} className={'ml-1'}/>
+              </li>
+              <li className={'p-1 flex flex-row items-center cursor-pointer hover:underline underline-offset-4'}>
+                Developers
+                <ChevronDownIcon width={20} height={20} className={'ml-1'}/>
+              </li>
+              <li className={'p-1 flex flex-row items-center cursor-pointer hover:underline underline-offset-4'}>
+                Safety
+              </li>
+            </ul>
+            <ul className={'flex flex-row gap-8'}>
+              <li className={'p-1 flex flex-row items-center hover:underline underline-offset-4 cursor-pointer'}>
+                Search
+              </li>
+              <li className={'p-1 flex flex-row items-center hover:underline underline-offset-4 cursor-pointer'}>
+                Log in <ArrowUpRightIcon width={20} height={20} className={'mt-1'}/>
+              </li>
+              <li className={'border p-1 flex flex-row items-center hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer'}>
+                Sign in <ArrowUpRightIcon width={20} height={20} className={'mt-1'}/>
+              </li>
+            </ul>
+          </div>
+        </div>
 
-      {/* PC */}
+        {/* Mobile Navbar */}
+        {/* Navbar */}
+        <div className={'w-full sm:hidden max-sm:flex flex-row justify-between p-2 text-lg'}>
+          <div className={'flex flex-row'}>
+            <LZIcon width={60} height={60} className={``} />
+            <p className={'mt-5'}>Lesenelir AI Base</p>
+          </div>
+          <p className={'mt-5 cursor-pointer'}>Menu</p>
+        </div>
 
-      {/* Navbar */}
-      <div className={'w-full flex flex-row p-6 text-lg'}>
-        <LZIcon width={60} height={60} className={`-mt-4`} />
-        <p className={'w-1/5 text-xl p-1 flex flex-row items-center'}>Lesenelir AI Base</p>
-        <div className={'w-full flex flex-row justify-between '}>
-          <ul className={'flex flex-row gap-8'}>
-            <li className={'p-1 flex flex-row items-center cursor-pointer hover:underline underline-offset-4'}>
-              Research
-              <ChevronDownIcon width={20} height={20} className={'ml-1'}/>
+        {/* Content */}
+        <div className={'flex-1 flex flex-col justify-center items-center'}>
+          <div className={'flex flex-row'}>
+            <h2 className={`text-lg p-2 ${animationStep === 'text' ? 'block' : 'hidden'}`}>
+              {textList[textIndex]}
+            </h2>
+            <div className={`w-10 h-10 rounded-full bg-canvas-t-${colorIndex}`}></div>
+          </div>
+          <ul className={'list-none flex flex-row gap-2 m-6'}>
+            <li className={`p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} 
+            hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`}
+            >
+              <Link href={'/chat'}>ChatGPT</Link>
             </li>
-            <li className={'p-1 flex flex-row items-center cursor-pointer hover:underline underline-offset-4'}>
-              Product
-              <ChevronDownIcon width={20} height={20} className={'ml-1'}/>
-            </li>
-            <li className={'p-1 flex flex-row items-center cursor-pointer hover:underline underline-offset-4'}>
-              Developers
-              <ChevronDownIcon width={20} height={20} className={'ml-1'}/>
-            </li>
-            <li className={'p-1 flex flex-row items-center cursor-pointer hover:underline underline-offset-4'}>
-              Safety
-            </li>
-          </ul>
-          <ul className={'flex flex-row gap-8'}>
-            <li className={'p-1 flex flex-row items-center hover:underline underline-offset-4 cursor-pointer'}>
-              Search
-            </li>
-            <li className={'p-1 flex flex-row items-center hover:underline underline-offset-4 cursor-pointer'}>
-              Log in <ArrowUpRightIcon width={20} height={20} className={'mt-1'}/>
-            </li>
-            <li className={'border p-1 flex flex-row items-center hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer'}>
-              Sign in <ArrowUpRightIcon width={20} height={20} className={'mt-1'}/>
+            <li className={`p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} 
+            hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`}
+            >
+              <Link href={'/dall'}>DALL-E</Link>
             </li>
           </ul>
         </div>
-      </div>
 
-      {/* Content */}
-      <div className={'flex-1 flex flex-col justify-center items-center'}>
-        <div className={'flex flex-row'}>
-          <h2 className={`text-lg p-2 ${animationStep === 'text' ? 'block' : 'hidden'}`}>
-            {textList[textIndex]}
-          </h2>
-          <div className={`w-10 h-10 rounded-full bg-canvas-t-${colorIndex}`}></div>
-        </div>
-        <ul className={'list-none flex flex-row gap-2 m-6'}>
-          <li className={`p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} 
-            hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`}
-          >
-            <Link href={'/chat'}>ChatGPT</Link>
-          </li>
-          <li className={`p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} 
-            hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`}
-          >
-            <Link href={'/dall'}>DALL-E</Link>
-          </li>
-        </ul>
-      </div>
-
-      {/* Footer */}
-      <div className={'flex flex-col self-start m-10'}>
-        <p>
-          <span className={'text-lg'}> Lesenelir AI Base: </span>
-          <span className={'text-base'}>
+        {/* Footer */}
+        <div className={'flex flex-col self-start m-10'}>
+          <p>
+            <span className={'text-lg'}> Lesenelir AI Base: </span>
+            <span className={'text-base'}>
             A collection of art and code works about AI, inspired by OpenAI.
           </span>
-        </p>
-        <p>
-          This project includes: chatGPT and DALL-E.
-        </p>
-        <div className={'flex flex-row'}>
-          <p className={'mt-4 underline underline-offset-4 cursor-pointer hover:text-opacity-30'}>
-            <a href={'https://github.com/lesenelir'} target={'_blank'} rel={'noopener noreferrer'}>
-              Find the author
-            </a>
           </p>
-          <ArrowUpRightIcon width={24} height={24} className={'ml-1 mt-4'}/>
+          <p>
+            This project includes: chatGPT and DALL-E.
+          </p>
+          <div className={'flex flex-row'}>
+            <p className={'mt-4 underline underline-offset-4 cursor-pointer hover:text-opacity-30'}>
+              <a href={'https://github.com/lesenelir'} target={'_blank'} rel={'noopener noreferrer'}>
+                Find the author
+              </a>
+            </p>
+            <ArrowUpRightIcon width={24} height={24} className={'ml-1 mt-4'}/>
+          </div>
         </div>
       </div>
-
-    </div>
+    </>
   )
 }
 
