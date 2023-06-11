@@ -54,6 +54,8 @@ function Home() {
           bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex}`}
     >
 
+      {/* PC */}
+
       {/* Navbar */}
       <div className={'w-full flex flex-row p-6 text-lg'}>
         <LZIcon width={60} height={60} className={`-mt-4`} />
