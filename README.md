@@ -15,6 +15,7 @@ Additionally, Typescript has been incorporated into the entire project.
   - [x] Dark mode and Light mode
   - [x] Mobile support
   - [x] i18n Internationalization
+  - [x] Home page animation
 
 - [x] GPT-3 API integration
 
