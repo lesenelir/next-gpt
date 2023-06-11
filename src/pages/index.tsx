@@ -1,7 +1,8 @@
 import Head from "next/head"
-import Link from "next/link"
 
-function Home() {
+import Home from "@/components/utils/Home"
+
+function HomePage() {
   return (
     <>
       <Head>
@@ -10,15 +11,10 @@ function Home() {
         <link rel="icon" href={`/favicon.ico`}/>
       </Head>
 
-      <div className={'h-screen flex flex-col justify-center items-center'}>
-        <h2 className={'text-lg p-2'}>Welcome to the Lesenelir AI Experiment Base</h2>
-        <ul className={'list-none flex flex-row gap-2'}>
-          <li className={'p-2 rounded-lg bg-menuColors-100 hover:opacity-80 hover:cursor-pointer'}><Link href={'/chat'}>ChatGPT</Link></li>
-          <li className={'p-2 rounded-lg bg-menuColors-100 hover:opacity-80 hover:cursor-pointer'}><Link href={'/dall'}>DallGPT</Link></li>
-        </ul>
-      </div>
+      <Home/>
     </>
   )
 }
 
-export default Home
+export default HomePage
+
