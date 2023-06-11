@@ -22,13 +22,16 @@ function Home() {
   const [animationStep, setAnimationStep] = useState<'text' | 'circle'>('circle')
 
   useEffect(() => {
-    // 显示第一条信息
-    setTextIndex((prevState: number) => (prevState + 1) % 7)
-    setAnimationStep('text')
+    // 第一次1.5s后显示信息
+    const firstTimeout = setTimeout(() => {
+      setTextIndex((prevState: number) => (prevState + 1) % 7)
+      setAnimationStep('text') // 显示文字
+    }, 1500)
+
 
     const interval: NodeJS.Timer = setInterval(() => {
-      setAnimationStep('circle')
-      setColorIndex((prevState: number) => (prevState + 1) % 7)
+      setAnimationStep('circle') // 不显示文字，显示圆圈
+      setColorIndex((prevState: number) => (prevState + 1) % 7) // 背景变色
 
       const timeout = setTimeout(() => {
         setTextIndex((prevState: number) => (prevState + 1) % 7)
@@ -42,6 +45,7 @@ function Home() {
 
     return () => {
       clearInterval(interval)
+      clearTimeout(firstTimeout)
     }
   }, [])
 
@@ -89,7 +93,7 @@ function Home() {
       {/* Content */}
       <div className={'flex-1 flex flex-col justify-center items-center'}>
         <div className={'flex flex-row'}>
-          <h2 className={`text-lg p-2 ${animationStep === 'text' ? 'animate-slidein' : 'hidden'}`}>
+          <h2 className={`text-lg p-2 ${animationStep === 'text' ? 'block' : 'hidden'}`}>
             {textList[textIndex]}
           </h2>
           <div className={`w-10 h-10 rounded-full bg-canvas-t-${colorIndex}`}></div>
@@ -119,6 +123,14 @@ function Home() {
         <p>
           This project includes: chatGPT and DALL-E.
         </p>
+        <div className={'flex flex-row'}>
+          <p className={'mt-4 underline underline-offset-4 cursor-pointer hover:text-opacity-30'}>
+            <a href={'https://github.com/lesenelir'} target={'_blank'} rel={'noopener noreferrer'}>
+              Find the author
+            </a>
+          </p>
+          <ArrowUpRightIcon width={24} height={24} className={'ml-1 mt-4'}/>
+        </div>
       </div>
 
     </div>
