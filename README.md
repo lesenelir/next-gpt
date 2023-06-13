@@ -42,11 +42,11 @@ npm i
 
 - Create a `.env` file in the root directory and add the following
 
+> If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
+
 ```
 OPENAI_API_KEY=Your_OpenAI_API_Key
 ```
-
-If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
 
 - Run
 
