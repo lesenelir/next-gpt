@@ -20,6 +20,7 @@ model User {
 model ChatItem {
   id          Int           @id @default(autoincrement())
   item_name   String
+  item_uuid   String        @unique
   modify_date DateTime      @default(now())
   user_id     Int
   User        User          @relation(fields: [user_id], references: [id])
