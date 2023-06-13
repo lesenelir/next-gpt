@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            Int        @id @default(autoincrement())
+  api_key       String     @unique
+  session_token String     @unique
+  ChatItems     ChatItem[]
+}
+
+model ChatItem {
+  id          Int           @id @default(autoincrement())
+  item_name   String
+  modify_date DateTime      @default(now())
+  user_id     Int
+  User        User          @relation(fields: [user_id], references: [id])
+  ChatMessage ChatMessage[]
+}
+
+model ChatMessage {
+  id              Int      @id @default(autoincrement())
+  chat_id         Int
+  message_content String
+  is_User         Boolean
+  ChatItem        ChatItem @relation(fields: [chat_id], references: [id])
+}
+
