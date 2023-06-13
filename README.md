@@ -20,9 +20,46 @@ Additionally, Typescript has been incorporated into the entire project.
 - [x] GPT-3 API integration
 
 - [ ] Database integration
+  - [ ] MySQL
   - [ ] PostgreSQL
 
 - [ ] Login authentication
+
+
+## Run
+
+- Get the repository code
+
+```
+git clone git@github.com:lesenelir/next-gpt.git
+```
+
+- Installing dependencies
+
+```
+npm i
+```
+
+- Create a `.env` file in the root directory and add the following
+
+```
+OPENAI_API_KEY=Your_OpenAI_API_Key
+```
+
+If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
+
+- Run
+
+```
+npm run dev
+```
+
+## Deploy
+
+This project is deployed on [Vercel](https://vercel.com/) and uses Vercel storage to store the relevant data.
+
+You can also run this project in your local environment. The data will be stored in the mysql database.
+
 
 ---
 
