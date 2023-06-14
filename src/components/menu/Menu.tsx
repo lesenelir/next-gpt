@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useContext, useState} from "react"
 import {useTranslation} from "next-i18next"
 
-import {IChat, IChatMessage, MyContext} from "@/libs/myContext"
+import {IChat, MyContext} from "@/libs/myContext"
 import Divide from "@/components/utils/Divide"
 import ChatBox from "@/components/menu/ChatBox"
 import MenuClear from "@/components/menu/MenuClear"
@@ -10,6 +10,7 @@ import MenuSettings from "@/components/menu/MenuSettings"
 import ColumnIcon from "@/components/icon/ColumnIcon"
 import MenuLogout from "@/components/menu/MenuLogout"
 import XIcon from "@/components/icon/XIcon"
+import {underScope2Camel} from "@/libs/underScope2Camel";
 
 interface IProps {
   isMenuOpen: boolean
@@ -23,15 +24,39 @@ function Menu(props: IProps) {
   const {t} = useTranslation('common')
   const {theme, chats, setChats} = useContext(MyContext)
 
-  const handlerAddChat = () => {
-    setChats((prevState: IChat[]) => [{
-      id: Math.random(),
-      userId: Math.random(),
-      itemName: 'New Chat',
-      itemUUID: String(Math.random()),
-      modifyDate: new Date(),
-      ChatMessage: [] as IChatMessage[]
-    }, ...prevState])
+  // const handlerAddChat = () => {
+  //   setChats((prevState: IChat[]) => [{
+  //     id: Math.random(),
+  //     userId: Math.random(),
+  //     itemName: 'New Chat',
+  //     itemUUID: String(Math.random()),
+  //     modifyDate: new Date(),
+  //     ChatMessage: [] as IChatMessage[]
+  //   }, ...prevState])
+  // }
+
+  const handlerAddChat = async () => {
+    console.log(localStorage.getItem('open_api_key'))
+
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        api_key: localStorage.getItem('open_api_key')
+      })
+    }
+
+    try {
+      const response = await fetch('/api/addChatItem', options)
+      const data = await response.json()
+      console.log(data)
+      const chatsFromBackend = data?.data[0]?.ChatItems
+      setChats(underScope2Camel(chatsFromBackend))
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   if (!isMenuOpen) {
