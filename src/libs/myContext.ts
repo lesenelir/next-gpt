@@ -1,29 +1,26 @@
-import {createContext} from "react"
+import {createContext, SetStateAction, Dispatch} from "react"
 
 export interface IChat {
   id: number
-  uuid: string
+  userId: number
   itemName: string
+  itemUUID: string
   modifyDate: Date
+  ChatMessage: IChatMessage[]
+}
+
+export interface IChatMessage {
+  id: number
+  chatId: number
+  messageContent: string
+  isUser: boolean
 }
 
 interface IMyContext {
   theme: string
-  setTheme: (theme: string) => void
+  setTheme: Dispatch<SetStateAction<string>>
   chats: IChat[]
-  setChats: (chats: IChat[]) => void
+  setChats: Dispatch<SetStateAction<IChat[]>>
 }
 
-// export const MyContext = createContext({
-//   theme: 'light',
-//   setTheme: (theme: string) => {},
-//   chats: [],
-//   setChats: (chats: IChat[]) => {}
-// } as IMyContext)
-
-export const MyContext = createContext<IMyContext>({
-  theme: 'light',
-  setTheme: (theme: string) => {},
-  chats: [] as IChat[],
-  setChats: (chats: IChat[]) => {}
-})
+export const MyContext = createContext<IMyContext>({} as IMyContext)

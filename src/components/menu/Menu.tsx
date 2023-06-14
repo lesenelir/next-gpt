@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useContext, useState} from "react"
 import {useTranslation} from "next-i18next"
 
-import {MyContext} from "@/libs/myContext"
+import {IChat, IChatMessage, MyContext} from "@/libs/myContext"
 import Divide from "@/components/utils/Divide"
 import ChatBox from "@/components/menu/ChatBox"
 import MenuClear from "@/components/menu/MenuClear"
@@ -11,11 +11,6 @@ import ColumnIcon from "@/components/icon/ColumnIcon"
 import MenuLogout from "@/components/menu/MenuLogout"
 import XIcon from "@/components/icon/XIcon"
 
-export interface IChat {
-  id: number
-  message: string
-}
-
 interface IProps {
   isMenuOpen: boolean
   setIsMenuOpen: (isMenuOpen: boolean) => void
@@ -23,14 +18,20 @@ interface IProps {
 
 function Menu(props: IProps) {
   const {isMenuOpen, setIsMenuOpen} = props
-  const [chats, setChats] = useState<IChat[]>([])
   const [search, setSearch] = useState<string>('')
   const [isSearch, setIsSearch] = useState<boolean>(false)
-  const {theme} = useContext(MyContext)
   const {t} = useTranslation('common')
+  const {theme, chats, setChats} = useContext(MyContext)
 
   const handlerAddChat = () => {
-    setChats((prevState: IChat[]) => [{id: Math.random(), message: 'New Chat'}, ...prevState])
+    setChats((prevState: IChat[]) => [{
+      id: Math.random(),
+      userId: Math.random(),
+      itemName: 'New Chat',
+      itemUUID: String(Math.random()),
+      modifyDate: new Date(),
+      ChatMessage: [] as IChatMessage[]
+    }, ...prevState])
   }
 
   if (!isMenuOpen) {
@@ -90,17 +91,30 @@ function Menu(props: IProps) {
 
       {/* Content */}
       <Divide/>
+      {/*<div className={'flex-grow overflow-auto scrollable'}>*/}
+      {/*  {isSearch ? (*/}
+      {/*    chats.filter((chat: IChat) => chat.message.includes(search)).map((chat: IChat) => (*/}
+      {/*      <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>*/}
+      {/*    ))*/}
+      {/*  ) : (*/}
+      {/*    chats.map((chat: IChat) => (*/}
+      {/*      <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>*/}
+      {/*    ))*/}
+      {/*  )}*/}
+      {/*</div>*/}
       <div className={'flex-grow overflow-auto scrollable'}>
         {isSearch ? (
-          chats.filter((chat: IChat) => chat.message.includes(search)).map((chat: IChat) => (
-            <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>
+          chats.filter((chat: IChat) => chat.itemName.includes(search)).map((chat: IChat) => (
+            // 此处的key 可以后续该为item的uuid值
+            <ChatBox key={chat.id} message={chat.itemName} id={chat.id}/>
           ))
         ) : (
           chats.map((chat: IChat) => (
-            <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>
+            <ChatBox key={chat.id} message={chat.itemName} id={chat.id}/>
           ))
         )}
       </div>
+
 
       {/* Button */}
       <Divide/>

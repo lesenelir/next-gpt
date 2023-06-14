@@ -1,6 +1,8 @@
-import {ChangeEvent, Dispatch, SetStateAction, useState} from "react"
+import {ChangeEvent, Dispatch, SetStateAction, useContext, useState} from "react"
 import {useTranslation} from "next-i18next"
 
+import {MyContext} from "@/libs/myContext"
+import {underScope2Camel} from "@/libs/underScope2Camel"
 import Divide from "@/components/utils/Divide"
 import XIcon from "@/components/icon/XIcon"
 
@@ -12,6 +14,7 @@ function KeyModal(props: IProps) {
   const {setShowModalKey} = props
   const [inputValue, setInputValue] = useState<string>('')
   const {t} = useTranslation('common')
+  const {setChats} = useContext(MyContext)
 
   const handlerSaveKey = async () => {
     const options = {
@@ -24,7 +27,11 @@ function KeyModal(props: IProps) {
     try {
       const response = await fetch('/api/key', options)
       const data = await response.json()
-      console.log(data)
+      const chatsFromBackend = data?.data[0]?.ChatItems
+      setShowModalKey(false)
+      setChats(underScope2Camel(chatsFromBackend))
+      // console.log(chatsFromBackend)
+      // console.log(underScope2Camel(chatsFromBackend))
     } catch (e) {
       console.error(e)
     }

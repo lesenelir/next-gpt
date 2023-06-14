@@ -1,6 +1,6 @@
-import {ChangeEvent, Dispatch, SetStateAction, useState} from "react"
+import {ChangeEvent, useContext, useState} from "react"
 
-import {IChat} from "@/components/menu/Menu"
+import {IChat, MyContext} from "@/libs/myContext"
 import MessageIcon from "@/components/icon/MessageIcon"
 import EditIcon from "@/components/icon/EditIcon"
 import TrashIcon from "@/components/icon/TrashIcon"
@@ -10,24 +10,23 @@ import XIcon from "@/components/icon/XIcon"
 interface IProps {
   id: number
   message: string
-  chatsArr: IChat[]
-  setChatsArr: Dispatch<SetStateAction<IChat[]>>
 }
 
 function ChatBox(props: IProps) {
-  const {id, message, chatsArr, setChatsArr} = props
+  const {id, message} = props
   const [inputValue, setInputValue] = useState<string>(message)
   const [isEdit, setIsEdit] = useState<boolean>(false)
+  const {chats, setChats} = useContext(MyContext)
 
   const handlerCheckClick = () => {
     setIsEdit(!isEdit)
-    const updatedChats: IChat[] = chatsArr.map((chat: IChat) => {
+    const updatedChats: IChat[] = chats.map((chat: IChat) => {
       if (chat.id === id) {
-        return {...chat, message: inputValue}
+        return {...chat, itemName: inputValue}
       }
       return chat
     })
-    setChatsArr(updatedChats)
+    setChats(updatedChats)
   }
 
   return (
@@ -71,8 +70,8 @@ function ChatBox(props: IProps) {
             height={16}
             className={'mr-1 text-wordColor-light'}
             onClick={() => {
-              const newChatsArr: IChat[] = chatsArr.filter((chat: IChat) => chat.id !== id)
-              setChatsArr(newChatsArr)
+              const newChatsArr: IChat[] = chats.filter((chat: IChat) => chat.id !== id)
+              setChats(newChatsArr)
             }}
           />
         </div>
