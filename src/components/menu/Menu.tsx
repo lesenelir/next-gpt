@@ -2,6 +2,7 @@ import React, {ChangeEvent, useContext, useState} from "react"
 import {useTranslation} from "next-i18next"
 
 import {IChat, MyContext} from "@/libs/myContext"
+import {underScope2Camel} from "@/libs/underScope2Camel"
 import Divide from "@/components/utils/Divide"
 import ChatBox from "@/components/menu/ChatBox"
 import MenuClear from "@/components/menu/MenuClear"
@@ -10,7 +11,6 @@ import MenuSettings from "@/components/menu/MenuSettings"
 import ColumnIcon from "@/components/icon/ColumnIcon"
 import MenuLogout from "@/components/menu/MenuLogout"
 import XIcon from "@/components/icon/XIcon"
-import {underScope2Camel} from "@/libs/underScope2Camel";
 
 interface IProps {
   isMenuOpen: boolean
