@@ -4,10 +4,10 @@ export interface IDataFromServer {
   item_name: string
   item_uuid: string
   modify_date: Date
-  ChatMessage: IChatMessage[]
+  ChatMessage: IChatMessageFromServer[]
 }
 
-export interface IChatMessage {
+export interface IChatMessageFromServer {
   id: number
   chat_id: number
   message_content: string
