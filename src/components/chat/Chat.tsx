@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react"
 import {useTranslation} from "next-i18next"
 
-import {ThemeContext} from "@/components/utils/ThemeProvider"
+import {MyContext} from "@/libs/myContext"
 import ChatInput from "@/components/chat/ChatInput"
 import Footer from "@/components/utils/Footer"
 import UserIcon from "@/components/icon/UserIcon"
@@ -17,7 +17,7 @@ function Chat() {
   const [answer, setAnswer] = useState<IMessage | null>(null)
   const [isChatting, setIsChatting] = useState<boolean>(false)
   const [previousChat, setPreviousChat] = useState<IMessage[]>([])
-  const {theme} = useContext(ThemeContext)
+  const {theme} = useContext(MyContext)
   const {t} = useTranslation('common')
 
   useEffect(() => {

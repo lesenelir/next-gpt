@@ -1,8 +1,7 @@
-import Image from "next/image"
 import React, {ChangeEvent, useContext, useState} from "react"
 import {useTranslation} from "next-i18next"
 
-import {ThemeContext} from "@/components/utils/ThemeProvider"
+import {MyContext} from "@/libs/myContext"
 import Divide from "@/components/utils/Divide"
 import ChatBox from "@/components/menu/ChatBox"
 import MenuClear from "@/components/menu/MenuClear"
@@ -10,6 +9,7 @@ import MenuKey from "@/components/menu/MenuKey"
 import MenuSettings from "@/components/menu/MenuSettings"
 import ColumnIcon from "@/components/icon/ColumnIcon"
 import MenuLogout from "@/components/menu/MenuLogout"
+import XIcon from "@/components/icon/XIcon"
 
 export interface IChat {
   id: number
@@ -26,7 +26,7 @@ function Menu(props: IProps) {
   const [chats, setChats] = useState<IChat[]>([])
   const [search, setSearch] = useState<string>('')
   const [isSearch, setIsSearch] = useState<boolean>(false)
-  const {theme} = useContext(ThemeContext)
+  const {theme} = useContext(MyContext)
   const {t} = useTranslation('common')
 
   const handlerAddChat = () => {
@@ -37,7 +37,7 @@ function Menu(props: IProps) {
     return (
       <div
         className={'max-sm:hidden h-10 p-2 border border-gray-300 m-2 rounded-lg cursor-pointer ' +
-          `${theme === 'dark' ? 'text-wordColor-light hover:bg-menuColors-900' : 'text-wordColor-dark hover:bg-menuColors-50'} `}
+          `${theme === 'dark' ? 'text-wordColor-light hover:bg-menuColors-900' : 'text-wordColor-dark hover:bg-menuColors-50'}`}
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <ColumnIcon width={20} height={20}/>
@@ -48,7 +48,7 @@ function Menu(props: IProps) {
   return (
     <div className={`h-screen flex flex-col justify-between bg-menuColors-950 p-2 w-64
           max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:z-10 max-sm:w-3/4 max-sm:flex max-sm:flex-col
-          ${isMenuOpen ? 'sm:flex flex-col max-sm:block': 'sm:hidden max-sm:hidden'}`}
+          ${isMenuOpen ? 'sm:flex flex-col max-sm:block' : 'sm:hidden max-sm:hidden'}`}
     >
       {/* Top */}
       <div className={'mb-4'}>
@@ -82,7 +82,7 @@ function Menu(props: IProps) {
           />
           {isSearch && (
             <button className={'absolute right-0 top-0 mt-1 p-2 opacity-90'}>
-              <Image src={'/x.svg'} alt={'x icon'} width={20} height={20}/>
+              <XIcon width={20} height={20} className={'text-wordColor-light'}/>
             </button>
           )}
         </div>

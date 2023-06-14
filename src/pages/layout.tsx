@@ -1,7 +1,7 @@
 import {ReactNode, useContext, useState} from "react"
 import Head from "next/head"
 
-import {ThemeContext} from "@/components/utils/ThemeProvider"
+import {MyContext} from "@/libs/myContext"
 import Menu from "@/components/menu/Menu"
 import Divide from "@/components/utils/Divide"
 import ShrinkIcon from "@/components/icon/ShrinkIcon"
@@ -13,7 +13,7 @@ interface IProps {
 
 function Layout(props: IProps) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(true)
-  const {theme} = useContext(ThemeContext)
+  const {theme} = useContext(MyContext)
   const {children} = props
 
   const toggleMenu = () => {

@@ -1,15 +1,15 @@
 import type {AppProps} from 'next/app'
 import {appWithTranslation} from "next-i18next"
 
-import ThemeProvider from "@/components/utils/ThemeProvider"
+import Provider from "@/components/utils/Provider"
 
 import '@/styles/globals.css'
 
 function App({Component, pageProps}: AppProps) {
   return (
-    <ThemeProvider>
+    <Provider>
       <Component {...pageProps} />
-    </ThemeProvider>
+    </Provider>
   )
 }
 

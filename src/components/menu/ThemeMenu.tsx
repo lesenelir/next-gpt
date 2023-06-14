@@ -1,10 +1,10 @@
 import {useContext} from "react"
 import {useTranslation} from "next-i18next"
 
-import {ThemeContext} from "@/components/utils/ThemeProvider"
+import {MyContext} from "@/libs/myContext"
 
 function ThemeMenu() {
-  const {setTheme} = useContext(ThemeContext)
+  const {setTheme} = useContext(MyContext)
   const {t} = useTranslation('common')
 
   return (

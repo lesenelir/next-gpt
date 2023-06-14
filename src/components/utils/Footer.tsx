@@ -1,11 +1,11 @@
 import {useContext} from "react"
 import {useTranslation} from "next-i18next"
 
-import {ThemeContext} from "@/components/utils/ThemeProvider"
+import {MyContext} from "@/libs/myContext"
 import GithubIcon from "@/components/icon/GithubIcon"
 
 function Footer() {
-  const {theme} = useContext(ThemeContext)
+  const {theme} = useContext(MyContext)
   const {t} = useTranslation('common')
 
   return (
