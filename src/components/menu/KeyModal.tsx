@@ -1,17 +1,34 @@
-import {ChangeEvent, useState} from "react"
+import {ChangeEvent, Dispatch, SetStateAction, useState} from "react"
 import {useTranslation} from "next-i18next"
 
 import Divide from "@/components/utils/Divide"
 import XIcon from "@/components/icon/XIcon"
 
 interface IProps {
-  setShowModalKey: (showModalKey: boolean) => void
+  setShowModalKey: Dispatch<SetStateAction<boolean>>
 }
 
 function KeyModal(props: IProps) {
   const {setShowModalKey} = props
   const [inputValue, setInputValue] = useState<string>('')
   const {t} = useTranslation('common')
+
+  const handlerSaveKey = async () => {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify({
+        api_key: inputValue
+      })
+    }
+
+    try {
+      const response = await fetch('/api/key', options)
+      const data = await response.json()
+      console.log(data)
+    } catch (e) {
+      console.error(e)
+    }
+  }
 
   return (
     <>
@@ -36,7 +53,12 @@ function KeyModal(props: IProps) {
               onChange={(e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
               className={'w-3/4 text-wordColor-light border border-gray-500 mt-2 p-2 rounded-lg bg-menuColors-900'}
             />
-            <button className={'w-1/5 h-3/4 mt-2 rounded-lg bg-emerald-800 hover:bg-emerald-700'}>{t('menu.modal.save')}</button>
+            <button
+              className={'w-1/5 h-3/4 mt-2 rounded-lg bg-emerald-800 hover:bg-emerald-700'}
+              onClick={handlerSaveKey}
+            >
+              {t('menu.modal.save')}
+            </button>
           </div>
         </div>
       </div>
