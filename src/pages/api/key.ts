@@ -2,7 +2,7 @@ import {NextApiRequest, NextApiResponse} from "next"
 import {PrismaClient} from '@prisma/client'
 import nc from 'next-connect'
 
-import {findUserType} from "@/libs/type"
+import {findUserAllDataType} from "@/libs/type"
 
 const handler = nc<NextApiRequest, NextApiResponse>()
 
@@ -13,7 +13,7 @@ const handleSavaKey = async (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     // Find the user by api_key
-    let user: findUserType = await prisma.user.findMany({
+    let user: findUserAllDataType = await prisma.user.findMany({
       where: {api_key: api_key},
       include:{
         ChatItems: {
