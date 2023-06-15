@@ -18,12 +18,11 @@ const handleAddChatItem = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // If the user does not exist, return null
     if (!user) {
-      res.status(404).json({message: 'User not found.'})
-      return
+      return res.status(404).json({message: 'User not found.'})
     }
 
     // Create a new ChatItem
-    let newChatItem: ChatItem = await prisma.chatItem.create({
+    await prisma.chatItem.create({
       data: {
         item_name: 'New Chat',
         modify_date: new Date(),
@@ -32,7 +31,6 @@ const handleAddChatItem = async (req: NextApiRequest, res: NextApiResponse) => {
         item_uuid: String(Math.random())
       }
     })
-    console.log(newChatItem)
 
     // Find the user by api_key in order to satisfy the type => findUserType
     const data: findUserAllDataType = await prisma.user.findMany({
@@ -46,9 +44,9 @@ const handleAddChatItem = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     })
 
-    res.status(200).json({data})
+    return res.status(200).json({data})
   } catch (e) {
-    res.status(500).json({message: 'Error connecting to Server.', e})
+    return res.status(500).json({message: 'Error connecting to Server.', e})
   }
 
 }

@@ -43,9 +43,9 @@ const handleSavaKey = async (req: NextApiRequest, res: NextApiResponse) => {
       })
     }
 
-    res.status(200).json({data: user})
+    return res.status(200).json({data: user})
   } catch (e) {
-    res.status(500).json({message: 'Error connecting to Server.', e})
+    return res.status(500).json({message: 'Error connecting to Server.', e})
   }
 
 }
