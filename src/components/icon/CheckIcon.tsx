@@ -1,8 +1,10 @@
+import {MouseEvent} from "react"
+
 interface IProps {
   width: number
   height: number
   className: string
-  onClick: () => void
+  onClick: (e: MouseEvent<HTMLElement, globalThis.MouseEvent>) => void
 }
 
 function checkIcon(props: IProps) {
