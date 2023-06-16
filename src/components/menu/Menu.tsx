@@ -21,6 +21,7 @@ function Menu(props: IProps) {
   const {isMenuOpen, setIsMenuOpen} = props
   const [search, setSearch] = useState<string>('')
   const [isSearch, setIsSearch] = useState<boolean>(false)
+  const [selectChatId, setSelectChatId] = useState<number | null>(null)
   const {t} = useTranslation('common')
   const {theme, chats, setChats} = useContext(MyContext)
 
@@ -51,7 +52,6 @@ function Menu(props: IProps) {
     try {
       const response = await fetch('/api/addChatItem', options)
       const data = await response.json()
-      console.log(data)
       const chatsFromBackend = data?.data[0]?.ChatItems
       setChats(underScope2Camel(chatsFromBackend))
     } catch (e) {
@@ -116,26 +116,28 @@ function Menu(props: IProps) {
 
       {/* Content */}
       <Divide/>
-      {/*<div className={'flex-grow overflow-auto scrollable'}>*/}
-      {/*  {isSearch ? (*/}
-      {/*    chats.filter((chat: IChat) => chat.message.includes(search)).map((chat: IChat) => (*/}
-      {/*      <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>*/}
-      {/*    ))*/}
-      {/*  ) : (*/}
-      {/*    chats.map((chat: IChat) => (*/}
-      {/*      <ChatBox key={chat.id} message={chat.message} id={chat.id} chatsArr={chats} setChatsArr={setChats}/>*/}
-      {/*    ))*/}
-      {/*  )}*/}
-      {/*</div>*/}
       <div className={'flex-grow overflow-auto scrollable'}>
         {isSearch ? (
           chats.filter((chat: IChat) => chat.itemName.includes(search)).map((chat: IChat) => (
-            // 此处的key 可以后续该为item的uuid值
-            <ChatBox key={chat.id} message={chat.itemName} id={chat.id}/>
+            <ChatBox
+              key={chat.itemUUID}
+              message={chat.itemName}
+              id={chat.id}
+              itemUUID={chat.itemUUID}
+              selectChatId={selectChatId}
+              setSelectChatId={setSelectChatId}
+            />
           ))
         ) : (
           chats.map((chat: IChat) => (
-            <ChatBox key={chat.id} message={chat.itemName} id={chat.id}/>
+            <ChatBox
+              key={chat.itemUUID}
+              message={chat.itemName}
+              id={chat.id}
+              itemUUID={chat.itemUUID}
+              selectChatId={selectChatId}
+              setSelectChatId={setSelectChatId}
+            />
           ))
         )}
       </div>
