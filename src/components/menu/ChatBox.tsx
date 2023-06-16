@@ -22,19 +22,34 @@ function ChatBox(props: IProps) {
   const [inputValue, setInputValue] = useState<string>(message)
   const [isDelete, setIsDelete] = useState<boolean>(false)
   const [isEdit, setIsEdit] = useState<boolean>(false)
-  const {chats, setChats} = useContext(MyContext)
+  const {setChats} = useContext(MyContext)
   const router = useRouter()
 
-  const handlerCheckClick = (e: MouseEvent<HTMLElement, globalThis.MouseEvent>) => {
+  const handlerCheckClick = async (e: MouseEvent<HTMLElement, globalThis.MouseEvent>) => {
     e.stopPropagation()
-    setIsEdit(!isEdit)
-    const updatedChats: IChat[] = chats.map((chat: IChat) => {
-      if (chat.id === id) {
-        return {...chat, itemName: inputValue}
-      }
-      return chat
-    })
-    setChats(updatedChats)
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        api_key: localStorage.getItem('open_api_key'),
+        item_uuid: itemUUID,
+        item_name: inputValue
+      })
+    }
+
+    try {
+      const response = await fetch('/api/updateChatItem', options)
+      const data = await response.json()
+      const chatsFromBackend = data?.data[0]?.ChatItems
+      setChats(underScope2Camel(chatsFromBackend))
+      await router.push(`/chat/${itemUUID}`)
+    } catch (e) {
+      console.error(e)
+    }
+
+    setIsEdit(false)
   }
 
   const handlerDeleteItem = async (e: MouseEvent<HTMLElement, globalThis.MouseEvent>) => {
@@ -64,7 +79,6 @@ function ChatBox(props: IProps) {
   }
 
   const handlerPageRouter = async () => {
-    console.log('asdkjaklsdjasl')
     await router.push(`/chat/${itemUUID}`)
     setSelectChatId(id)
   }
