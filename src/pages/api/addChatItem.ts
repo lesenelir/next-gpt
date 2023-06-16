@@ -1,6 +1,7 @@
 import {NextApiRequest, NextApiResponse} from "next"
 import nc from 'next-connect'
 import {PrismaClient, User} from '@prisma/client'
+import { v4 as uuidv4 } from 'uuid'
 
 import {findUserAllDataType} from "@/libs/type"
 
@@ -27,8 +28,7 @@ const handleAddChatItem = async (req: NextApiRequest, res: NextApiResponse) => {
         item_name: 'New Chat',
         modify_date: new Date(),
         user_id: user.id,
-        // 暂且用随机数代替 ， 此处之后用uuid来代替
-        item_uuid: String(Math.random())
+        item_uuid: uuidv4()
       }
     })
 
