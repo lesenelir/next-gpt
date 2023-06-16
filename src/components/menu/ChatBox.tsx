@@ -1,7 +1,7 @@
 import {ChangeEvent, useContext, useState, MouseEvent, Dispatch, SetStateAction} from "react"
 import {useRouter} from "next/router"
 
-import {IChat, MyContext} from "@/libs/myContext"
+import {MyContext} from "@/libs/myContext"
 import {underScope2Camel} from "@/libs/underScope2Camel"
 import MessageIcon from "@/components/icon/MessageIcon"
 import EditIcon from "@/components/icon/EditIcon"
