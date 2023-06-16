@@ -25,17 +25,6 @@ function Menu(props: IProps) {
   const {t} = useTranslation('common')
   const {theme, chats, setChats} = useContext(MyContext)
 
-  // const handlerAddChat = () => {
-  //   setChats((prevState: IChat[]) => [{
-  //     id: Math.random(),
-  //     userId: Math.random(),
-  //     itemName: 'New Chat',
-  //     itemUUID: String(Math.random()),
-  //     modifyDate: new Date(),
-  //     ChatMessage: [] as IChatMessage[]
-  //   }, ...prevState])
-  // }
-
   const handlerAddChat = async () => {
     console.log(localStorage.getItem('open_api_key'))
 
@@ -146,7 +135,7 @@ function Menu(props: IProps) {
       {/* Button */}
       <Divide/>
       <div className={'mt-4'}>
-        <MenuClear setChats={setChats}/>
+        <MenuClear/>
         <MenuKey/>
         <MenuSettings/>
         <MenuLogout/>
