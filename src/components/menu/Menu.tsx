@@ -26,8 +26,6 @@ function Menu(props: IProps) {
   const {theme, chats, setChats} = useContext(MyContext)
 
   const handlerAddChat = async () => {
-    console.log(localStorage.getItem('open_api_key'))
-
     const options = {
       method: 'POST',
       headers: {
