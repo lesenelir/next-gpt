@@ -129,11 +129,11 @@ function Home() {
           <p>
             <span className={'text-lg'}> Lesenelir AI Base: </span>
             <span className={'text-base'}>
-            A collection of art and code works about AI, inspired by OpenAI.
-          </span>
+              A collection of art and code works about AI, inspired by OpenAI.
+            </span>
           </p>
           <p>
-            This project includes: chatGPT and DALL-E.
+            This project includes: ChatGPT and DALL-E.
           </p>
           <div className={'flex flex-row'}>
             <p className={'mt-4 underline underline-offset-4 cursor-pointer hover:text-opacity-30'}>
