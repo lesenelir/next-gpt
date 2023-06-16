@@ -51,8 +51,10 @@ function Menu(props: IProps) {
   if (!isMenuOpen) {
     return (
       <div
-        className={'max-sm:hidden h-10 p-2 border border-gray-300 m-2 rounded-lg cursor-pointer ' +
-          `${theme === 'dark' ? 'text-wordColor-light hover:bg-menuColors-900' : 'text-wordColor-dark hover:bg-menuColors-50'}`}
+        className={
+          'max-sm:hidden h-10 p-2 border border-gray-300 m-2 rounded-lg cursor-pointer ' +
+          `${theme === 'dark' ? 'text-wordColor-light hover:bg-menuColors-900' : 'text-wordColor-dark hover:bg-menuColors-50'}`
+        }
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         <ColumnIcon width={20} height={20}/>
@@ -61,9 +63,12 @@ function Menu(props: IProps) {
   }
 
   return (
-    <div className={`h-screen flex flex-col justify-between bg-menuColors-950 p-2 w-64
-          max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:z-10 max-sm:w-3/4 max-sm:flex max-sm:flex-col
-          ${isMenuOpen ? 'sm:flex flex-col max-sm:block' : 'sm:hidden max-sm:hidden'}`}
+    <div
+      className={
+        'h-screen flex flex-col justify-between bg-menuColors-950 p-2 w-64 ' +
+        'max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:z-10 max-sm:w-3/4 max-sm:flex max-sm:flex-col ' +
+        `${isMenuOpen ? 'sm:flex flex-col max-sm:block' : 'sm:hidden max-sm:hidden'}`
+      }
     >
       {/* Top */}
       <div className={'mb-4'}>
