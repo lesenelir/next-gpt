@@ -8,7 +8,7 @@ const handler = nc<NextApiRequest, NextApiResponse>()
 
 const prisma = new PrismaClient()
 
-const handleAddChatItem = async (req: NextApiRequest, res: NextApiResponse) => {
+const handleUpdateChatItem = async (req: NextApiRequest, res: NextApiResponse) => {
   const {api_key, item_uuid, item_name} = req.body
 
   try {
@@ -36,7 +36,7 @@ const handleAddChatItem = async (req: NextApiRequest, res: NextApiResponse) => {
 
 }
 
-handler.post(handleAddChatItem)
+handler.post(handleUpdateChatItem)
 
 export default handler
 
