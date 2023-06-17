@@ -28,8 +28,9 @@ model ChatItem {
 
 model ChatMessage {
   id              Int      @id @default(autoincrement())
-  chat_uuid       String   @unique
+  chat_id         Int
+  chat_uuid       String
   message_content String
   is_User         Boolean
-  ChatItem        ChatItem @relation(fields: [chat_uuid], references: [item_uuid])
+  ChatItem        ChatItem @relation(fields: [chat_id], references: [id])
 }
