@@ -19,12 +19,15 @@ function KeyModal(props: IProps) {
   const handlerSaveKey = async () => {
     const options = {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         api_key: inputValue
       })
     }
 
-    localStorage.setItem('open_api_key', inputValue)
+    // localStorage.setItem('open_api_key', inputValue)
 
     try {
       const response = await fetch('/api/key', options)
@@ -32,8 +35,7 @@ function KeyModal(props: IProps) {
       const chatsFromBackend = data?.data[0]?.ChatItems
       setShowModalKey(false)
       setChats(underScope2Camel(chatsFromBackend))
-      // console.log(chatsFromBackend)
-      // console.log(underScope2Camel(chatsFromBackend))
+      localStorage.setItem('open_api_key', data?.data[0]?.api_key) // Save data open_api_key to localStorage
     } catch (e) {
       console.error(e)
     }
