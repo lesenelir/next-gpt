@@ -10,6 +10,7 @@ function Provider(props: IProps) {
   const {children} = props
   const [theme, setTheme] = useState<string>('light')
   const [chats, setChats] = useState<IChat[]>([])
+  const [chatMessage, setChatMessage] = useState<any[]>([])
 
   // useEffect(() => {
   //   localStorage.setItem('theme', theme)
@@ -17,7 +18,7 @@ function Provider(props: IProps) {
 
   return (
     <>
-      <MyContext.Provider value={{theme, setTheme, chats, setChats}}>
+      <MyContext.Provider value={{theme, setTheme, chats, setChats, chatMessage, setChatMessage}}>
         {children}
       </MyContext.Provider>
     </>

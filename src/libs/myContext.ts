@@ -12,6 +12,7 @@ export interface IChat {
 export interface IChatMessage {
   id: number
   chatId: number
+  chatUUID: string
   messageContent: string
   isUser: boolean
 }
@@ -21,6 +22,8 @@ interface IMyContext {
   setTheme: Dispatch<SetStateAction<string>>
   chats: IChat[]
   setChats: Dispatch<SetStateAction<IChat[]>>
+  chatMessage: IChatMessage[]
+  setChatMessage: Dispatch<SetStateAction<IChatMessage[]>>
 }
 
 export const MyContext = createContext<IMyContext>({} as IMyContext)
