@@ -1,41 +1,23 @@
-import {useContext, useEffect, useState} from "react"
+import {useContext, useState} from "react"
 import {useTranslation} from "next-i18next"
 
-import {MyContext} from "@/libs/myContext"
+import {IChatMessage, MyContext} from "@/libs/myContext"
 import ChatInput from "@/components/chat/ChatInput"
 import Footer from "@/components/utils/Footer"
 import UserIcon from "@/components/icon/UserIcon"
 import BotIcon from "@/components/icon/BotIcon"
 
-export interface IMessage {
-  role: string
-  content: string
-}
-
 function Chat() {
-  const [question, setQuestion] = useState<IMessage | null>(null)
-  const [answer, setAnswer] = useState<IMessage | null>(null)
   const [isChatting, setIsChatting] = useState<boolean>(false)
-  const [previousChat, setPreviousChat] = useState<IMessage[]>([])
-  const {theme} = useContext(MyContext)
+  const {theme, chatMessage} = useContext(MyContext)
   const {t} = useTranslation('common')
 
-  useEffect(() => {
-    if (question) setPreviousChat(previousChat => [...previousChat, question!])
-  }, [question])
-
-  useEffect(() => {
-    if (answer) setPreviousChat(previousChat => [...previousChat, answer!])
-  }, [answer])
-
-  console.log(previousChat)
-
   // Render List
-  const chatList = previousChat.map((chat, index) => {
-    if (chat.role === 'user') {
+  const chatList = chatMessage.map((chat: IChatMessage) => {
+    if (chat.isUser) {
       return (
         <div
-          key={index}
+          key={chat.id}
           className={
             'w-full p-8 flex flex-row ' +
             `${theme === 'dark' ? 'bg-botBackGround-userDark text-wordColor-light' : 'text-wordColor-dark'}`
@@ -45,14 +27,14 @@ function Chat() {
             <UserIcon/>
           </div>
           <div className={'sm:mr-60'}>
-            <p className={'ml-4'}>{chat.content}</p>
+            <p className={'ml-4'}>{chat.messageContent}</p>
           </div>
         </div>
       )
-    } else if (chat.role === 'assistant') {
+    } else { // isAssistant
       return (
         <div
-          key={index}
+          key={chat.id}
           className={
             'w-full p-8 flex flex-row ' +
             `${theme === 'dark' ? 'text-wordColor-light' : 'bg-botBackGround-light text-wordColor-dark'}`
@@ -62,7 +44,7 @@ function Chat() {
             <BotIcon/>
           </div>
           <div className={'sm:mr-60'}>
-            <p className={'ml-4'}>{chat.content}</p>
+            <p className={'ml-4'}>{chat.messageContent}</p>
           </div>
         </div>
       )
@@ -96,12 +78,7 @@ function Chat() {
       )}
 
       <div className={'w-full flex flex-col justify-center items-center'}>
-        <ChatInput
-          setAnswer={setAnswer}
-          setQuestion={setQuestion}
-          setIsChatting={setIsChatting}
-          setPreviousChat={setPreviousChat}
-        />
+        <ChatInput setIsChatting={setIsChatting}/>
         <Footer/>
       </div>
     </div>

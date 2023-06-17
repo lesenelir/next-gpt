@@ -3,20 +3,17 @@ import {useTranslation} from "next-i18next"
 import {useRouter} from "next/router"
 
 import {MyContext} from "@/libs/myContext"
-import {IMessage} from "@/components/chat/Chat"
+import {chatMessageCamel} from "@/libs/underScope2Camel"
 import SendIcon from "@/components/icon/SendIcon"
 
 interface IProps {
-  setAnswer: Dispatch<SetStateAction<IMessage | null>>
-  setQuestion: Dispatch<SetStateAction<IMessage | null>>
   setIsChatting: Dispatch<SetStateAction<boolean>>
-  setPreviousChat: Dispatch<SetStateAction<IMessage[]>>
 }
 
 function ChatInput(props: IProps) {
-  const {setAnswer, setQuestion, setIsChatting, setPreviousChat} = props
+  const {setIsChatting} = props
   const [inputValue, setInputValue] = useState<string>('')
-  const {theme} = useContext(MyContext)
+  const {theme, setChatMessage} = useContext(MyContext)
   const router = useRouter()
   const {t} = useTranslation('common')
 
@@ -24,14 +21,14 @@ function ChatInput(props: IProps) {
 
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
-    setQuestion({role: 'user', content: inputValue})
     setInputValue('')
     setIsChatting(true)
-    setAnswer({role: 'assistant', content: 'Loading...'})
     const options = {
       method: 'POST',
       body: JSON.stringify({
-        message: inputValue
+        api_key: localStorage.getItem('open_api_key'),
+        message: inputValue,
+        chat_uuid: router.query.id
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -41,8 +38,8 @@ function ChatInput(props: IProps) {
     try {
       const response = await fetch('/api/chat', options)
       const data = await response.json()
-      setPreviousChat((previousChat: IMessage[]) => previousChat.slice(0, previousChat.length - 1)) // delete loading message
-      setAnswer(data?.data?.choices[0].message)
+      const dataFromBackend = data?.data
+      setChatMessage(chatMessageCamel(dataFromBackend))
     } catch (e) {
       console.log('client error ', e)
     }
