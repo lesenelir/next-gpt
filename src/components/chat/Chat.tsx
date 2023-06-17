@@ -34,7 +34,13 @@ function Chat() {
   const chatList = previousChat.map((chat, index) => {
     if (chat.role === 'user') {
       return (
-        <div key={index} className={`w-full p-8 flex flex-row ${theme === 'dark' ? 'bg-botBackGround-userDark text-wordColor-light' : 'text-wordColor-dark'}`}>
+        <div
+          key={index}
+          className={
+            'w-full p-8 flex flex-row ' +
+            `${theme === 'dark' ? 'bg-botBackGround-userDark text-wordColor-light' : 'text-wordColor-dark'}`
+          }
+        >
           <div className={'sm:ml-60'}>
             <UserIcon/>
           </div>
@@ -45,7 +51,13 @@ function Chat() {
       )
     } else if (chat.role === 'assistant') {
       return (
-        <div key={index} className={`w-full flex flex-row p-8 ${theme === 'dark' ? 'text-wordColor-light' : 'bg-botBackGround-light text-wordColor-dark'}`}>
+        <div
+          key={index}
+          className={
+            'w-full p-8 flex flex-row ' +
+            `${theme === 'dark' ? 'text-wordColor-light' : 'bg-botBackGround-light text-wordColor-dark'}`
+          }
+        >
           <div className={'sm:ml-60'}>
             <BotIcon/>
           </div>
@@ -58,14 +70,20 @@ function Chat() {
   })
 
   return (
-    <div className={`h-screen flex-1 flex flex-col justify-center items-center
-          ${theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`}
+    <div
+      className={
+        'h-screen flex-1 flex flex-col justify-center items-center ' +
+        `${theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`
+      }
     >
 
       {/* Content Area */}
       {!isChatting ? (
-        <div className={`w-full flex-1 flex flex-col justify-center items-center mb-4 p-4
-            ${theme === 'dark' ? 'text-wordColor-light' : 'text-wordColor-dark'}`}
+        <div
+          className={
+            'w-full flex-1 flex flex-col justify-center items-center mb-4 p-4 ' +
+            `${theme === 'dark' ? 'text-wordColor-light' : 'text-wordColor-dark'}`
+          }
         >
           <h2 className={'text-2xl p-2'}>{t('chat.title')}</h2>
           <p className={'max-sm: text-center p-1'}>{t('chat.content1')}</p>

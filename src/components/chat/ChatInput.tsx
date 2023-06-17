@@ -45,8 +45,11 @@ function ChatInput(props: IProps) {
   }
 
   return (
-    <div className={`relative w-3/5 border p-1 rounded-lg drop-shadow-lg
-        ${theme === 'dark' ? 'bg-tuna-chatInput border-gray-700' : 'bg-white'}`}
+    <div
+      className={
+        'relative w-3/5 border p-1 rounded-lg drop-shadow-lg ' +
+        `${theme === 'dark' ? 'bg-tuna-chatInput border-gray-700' : 'bg-white'}`
+      }
     >
       <form onSubmit={handlerRequest}>
         <textarea
@@ -56,6 +59,10 @@ function ChatInput(props: IProps) {
           cols={100}
           rows={1}
           value={inputValue}
+          className={
+            'p-1 w-full rounded-lg mt-1 resize-none focus-visible:outline-none ' +
+            `${theme === 'dark' ? 'bg-tuna-chatInput text-wordColor-light' : 'bg-white text-black'}`
+          }
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setInputValue(e.target.value)}
           onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) => {
             if (e.key === 'Enter' && !e.shiftKey && inputValue) {
@@ -63,14 +70,19 @@ function ChatInput(props: IProps) {
               handlerRequest(e).then(() => console.log())
             }
           }}
-          className={`p-1 w-full rounded-lg mt-1 resize-none focus-visible:outline-none 
-          ${theme === 'dark' ? 'bg-tuna-chatInput text-wordColor-light' : 'bg-white text-black'}`}
         />
         <button
           type='submit'
-          className={`absolute right-1 top-1 mr-2 mt-2 opacity-30 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+          className={
+            'absolute right-1 top-1 mr-2 mt-2 opacity-30 ' +
+            `${theme === 'dark' ? 'text-white' : 'text-black'}`
+          }
         >
-          <SendIcon width={20} height={20} className={`mt-0.5 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`} />
+          <SendIcon
+            width={20}
+            height={20}
+            className={`mt-0.5 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}
+          />
         </button>
       </form>
     </div>
