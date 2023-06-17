@@ -15,6 +15,7 @@ function Chat() {
   const {t} = useTranslation('common')
   const router = useRouter()
 
+  // Click the specific chat box, then fetch the chat history by chat_uuid, and set the isChatting state
   useEffect(() => {
     const init = async () => {
       const options = {
@@ -43,7 +44,6 @@ function Chat() {
     }
 
     init().then(r => console.log(r))
-
   }, [router.query.id, setChatMessage])
 
   // Render List
