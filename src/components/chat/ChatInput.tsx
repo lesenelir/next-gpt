@@ -1,5 +1,6 @@
 import {ChangeEvent, Dispatch, FormEvent, KeyboardEvent, SetStateAction, useContext, useState} from "react"
 import {useTranslation} from "next-i18next"
+import {useRouter} from "next/router"
 
 import {MyContext} from "@/libs/myContext"
 import {IMessage} from "@/components/chat/Chat"
@@ -16,7 +17,10 @@ function ChatInput(props: IProps) {
   const {setAnswer, setQuestion, setIsChatting, setPreviousChat} = props
   const [inputValue, setInputValue] = useState<string>('')
   const {theme} = useContext(MyContext)
+  const router = useRouter()
   const {t} = useTranslation('common')
+
+  console.log(router.query.id) // chat uuid
 
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
