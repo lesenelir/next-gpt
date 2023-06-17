@@ -12,6 +12,7 @@ export interface IDataFromServer {
 export interface IChatMessageFromServer {
   id: number
   chat_id: number
+  chat_uuid: string
   message_content: string
   is_User: boolean
 }
@@ -30,6 +31,7 @@ export function underScope2Camel(dataFromServer: IDataFromServer[]): IChat[] {
         return {
           id: message.id,
           chatId: message.chat_id,
+          chatUUID: message.chat_uuid,
           messageContent: message.message_content,
           isUser: message.is_User
         }
@@ -40,6 +42,17 @@ export function underScope2Camel(dataFromServer: IDataFromServer[]): IChat[] {
   return res
 }
 
+export function chatMessageCamel(dataFromServer: IChatMessageFromServer[]): IChatMessage[] {
+  return dataFromServer.map((message: IChatMessageFromServer): IChatMessage => {
+    return {
+      id: message.id,
+      chatId: message.chat_id,
+      chatUUID: message.chat_uuid,
+      messageContent: message.message_content,
+      isUser: message.is_User
+    }
+  })
+}
 
 
 // export function underScope2Camel(dataFromServer: IDataFromServer[]) {
