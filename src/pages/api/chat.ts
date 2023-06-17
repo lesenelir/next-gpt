@@ -11,14 +11,14 @@ const handleSendMessage = async (req: NextApiRequest, res: NextApiResponse) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-3.5-turbo-0301',
       messages: [{role: 'user', content: req.body.message}],
       max_tokens: 1024,
     })
   }
 
   try {
-    const response = await fetch('https://api.openai-proxy.com/v1/chat/completions', options)
+    const response = await fetch('https://api3.openai-proxy.com/v1/chat/completions', options)
     const data = await response.json()
 
     if (response.ok) {
