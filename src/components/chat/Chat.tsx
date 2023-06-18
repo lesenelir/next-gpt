@@ -28,25 +28,11 @@ function Chat() {
         })
       }
 
-      const optionsGetChatItem = {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          api_key: localStorage.getItem('open_api_key')
-        })
-      }
-
       try {
         // fetch all chat message history by chat_uuid
         const response = await fetch('/api/isChat', options)
         const data = await response.json()
         const dataFromBackend = data?.data
-        // fetch all chat item to satisfy the menu update when user in /chat page and ask the bot
-        const menuChatsResponse = await fetch('/api/getChatItem', optionsGetChatItem)
-        const menuData = await menuChatsResponse.json()
-        setChats(chatItemCamel(menuData?.data))
         if (Array.isArray(dataFromBackend)) {
           setIsChatting(true)
           setChatMessage(chatMessageCamel(dataFromBackend))
@@ -61,7 +47,26 @@ function Chat() {
     if (router.query.id) {
       init().then(r => console.log(r))
     }
-  }, [router.query.id, setChatMessage, setChats])
+  }, [router.query.id, setChatMessage])
+
+  useEffect(() => {
+    const optionsGetChatItem = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        api_key: localStorage.getItem('open_api_key')
+      })
+    }
+
+    const init = async () => {
+      const menuChatsResponse = await fetch('/api/getChatItem', optionsGetChatItem)
+      const menuData = await menuChatsResponse.json()
+      setChats(chatItemCamel(menuData?.data))
+    }
+    init().then(r => console.log(r))
+  }, [setChats])
 
   // Render List
   const chatList = chatMessage.map((chat: IChatMessage) => {
