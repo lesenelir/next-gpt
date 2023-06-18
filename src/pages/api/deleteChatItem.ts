@@ -20,10 +20,18 @@ const deleteUniqueChatItem = async (req: NextApiRequest, res: NextApiResponse) =
       return res.status(404).json({message: 'ChatItem not found.'})
     }
 
-    // Delete the chatItem
-    await prisma.chatItem.delete({
-      where: {item_uuid}
-    })
+    await prisma.$transaction([
+      prisma.chatMessage.deleteMany({
+        where: {
+          chat_id: chatItem.id
+        }
+      }),
+      prisma.chatItem.delete({
+        where: {
+          item_uuid: item_uuid,
+        }
+      })
+    ])
 
     // Find the user by api_key in order to satisfy the type => findUserType
     const data: findUserAllDataType = await prisma.user.findMany({
