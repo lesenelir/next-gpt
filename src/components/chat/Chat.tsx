@@ -63,12 +63,6 @@ function Chat() {
     }
   }, [router.query.id, setChatMessage, setChats])
 
-  useEffect(() => {
-    setIsChatting(false)
-    console.log(1111118927389)
-  }, [router.query.id])
-
-
   // Render List
   const chatList = chatMessage.map((chat: IChatMessage) => {
     if (chat.isUser) {
