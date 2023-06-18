@@ -43,7 +43,9 @@ function Chat() {
       }
     }
 
-    init().then(r => console.log(r))
+    if (router.query.id) {
+      init().then(r => console.log(r))
+    }
   }, [router.query.id, setChatMessage])
 
   // Render List
