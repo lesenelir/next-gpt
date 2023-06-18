@@ -2,7 +2,7 @@ import {ChangeEvent, Dispatch, FormEvent, KeyboardEvent, SetStateAction, useCont
 import {useTranslation} from "next-i18next"
 import {useRouter} from "next/router"
 
-import {MyContext} from "@/libs/myContext"
+import {IChatMessage, MyContext} from "@/libs/myContext"
 import {chatMessageCamel} from "@/libs/underScope2Camel"
 import SendIcon from "@/components/icon/SendIcon"
 
@@ -22,6 +22,22 @@ function ChatInput(props: IProps) {
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
     setInputValue('')
+    // Add a temp message to the chat box.
+    // When the backend response, the temp message will be replaced by the real message.
+    setChatMessage((prevState: IChatMessage[]) => [...prevState, {
+      id: Math.random(),
+      chatId: Math.random(),
+      chatUUID: 'temp_uuid',
+      messageContent: inputValue,
+      isUser: true
+    }, {
+      id: Math.random(),
+      chatId: Math.random(),
+      chatUUID: 'temp_uuid',
+      messageContent: 'Loading...',
+      isUser: false
+    }])
+
     const options = {
       method: 'POST',
       body: JSON.stringify({
