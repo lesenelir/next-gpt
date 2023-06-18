@@ -3,7 +3,6 @@
     "title": "Welcome to Next Chatbot !",
     "content1": "It's an open-source project primarily aimed at learning.",
     "content2": "Next Chatbot allows you to plug in your GPT API key to provide services.",
-    "content3": "If you want to use this application, please enter your key in the OpenAI Key section on the left first.",
     "InputPlaceholder": "Type your message here..."
   },
   "footer": "From",

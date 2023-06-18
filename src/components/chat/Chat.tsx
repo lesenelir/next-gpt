@@ -126,7 +126,6 @@ function Chat() {
           <h2 className={'text-2xl p-2'}>{t('chat.title')}</h2>
           <p className={'max-sm: text-center p-1'}>{t('chat.content1')}</p>
           <p className={'max-sm: text-center'}>{t('chat.content2')}</p>
-          <p className={'max-sm: text-center p-1 text-rose-600'}>{t('chat.content3')}</p>
         </div>
       ) : (
         <div className={'w-full overflow-auto flex-1 flex flex-col'}>
