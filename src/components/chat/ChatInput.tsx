@@ -17,12 +17,11 @@ function ChatInput(props: IProps) {
   const router = useRouter()
   const {t} = useTranslation('common')
 
-  console.log(router.query.id) // chat uuid
+  // console.log(router.query.id) // chat uuid
 
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
     setInputValue('')
-    setIsChatting(true)
     const options = {
       method: 'POST',
       body: JSON.stringify({
@@ -39,7 +38,12 @@ function ChatInput(props: IProps) {
       const response = await fetch('/api/chat', options)
       const data = await response.json()
       const dataFromBackend = data?.data
+      // user in /chat page have no chat_uuid, so we need to redirect to /chat/:id
+      if (!router.query.id) {
+        await router.push(`/chat/${dataFromBackend[0]?.chat_uuid}`)
+      }
       setChatMessage(chatMessageCamel(dataFromBackend))
+      setIsChatting(true)
     } catch (e) {
       console.log('client error ', e)
     }

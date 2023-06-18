@@ -1,7 +1,7 @@
-import {NextApiRequest, NextApiResponse} from "next"
 import nc from 'next-connect'
+import {v4 as uuidv4} from "uuid"
+import {NextApiRequest, NextApiResponse} from "next"
 import {ChatItem, ChatMessage, PrismaClient, User} from "@prisma/client"
-// import {v4 as uuidv4} from "uuid"
 
 // import {findUserAllDataType} from "@/libs/type"
 
@@ -20,7 +20,7 @@ const generateChatMessage = async (message: string, chat_uuid: string, chat_id: 
     body: JSON.stringify({
       model: 'gpt-3.5-turbo',
       messages: [{role: 'user', content: message}],
-      max_tokens: 1024,
+      max_tokens: 512,
     })
   }
 
@@ -54,7 +54,6 @@ const generateChatMessage = async (message: string, chat_uuid: string, chat_id: 
   }
 }
 
-
 const handleSendMessage = async (req: NextApiRequest, res: NextApiResponse) => {
   const {api_key, message, chat_uuid} = req.body
 
@@ -71,16 +70,23 @@ const handleSendMessage = async (req: NextApiRequest, res: NextApiResponse) => {
     // user exists:
     // If chat_uuid is undefined, create a new ChatItem
     // TODO
-    // if (!chat_uuid) {
-    //   const chatItem = await prisma.chatItem.create({
-    //     data: {
-    //       item_name: 'New Chat',
-    //       modify_date: new Date(),
-    //       user_id: user.id,
-    //       item_uuid: uuidv4()
-    //     }
-    //   })
-    // }
+    if (!chat_uuid) {
+      const createdChatItem: ChatItem = await prisma.chatItem.create({
+        data: {
+          item_name: 'New Chat',
+          modify_date: new Date(),
+          user_id: user.id,
+          item_uuid: uuidv4()
+        }
+      })
+      // Search for the newly created chatItem to get the chat_uuid
+      await generateChatMessage(message, createdChatItem.item_uuid, createdChatItem.id)
+      // Find all messages based on chat_uuid.
+      const data: ChatMessage[] = await prisma.chatMessage.findMany({
+        where: {chat_uuid: createdChatItem.item_uuid}
+      })
+      return res.status(200).json({data})
+    }
 
     // user exists,
     // chat_uuid exists: In specific chat, send message to OpenAI API
@@ -102,9 +108,5 @@ const handleSendMessage = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 handler.post(handleSendMessage)
-
-handler.get((req: NextApiRequest, res: NextApiResponse) => {
-  return res.status(200).json({message: '/api/chat GET method request successful!'})
-})
 
 export default handler
