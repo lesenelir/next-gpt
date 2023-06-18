@@ -1,8 +1,9 @@
 {
   "chat": {
     "title": "欢迎来到 Next Chatbot !",
-    "content1": "这是一个主要用于学习的开源项目",
+    "content1": "这是一个主要用于学习的开源项目.",
     "content2": "Next Chatbot 允许你添加自己的 GPT API 从而提供服务.",
+    "content3": "如果你想使用该应用，请先在左侧的OpenAI Key 处输入你的密钥.",
     "InputPlaceholder": "在此输入内容..."
   },
   "footer": "来自",
