@@ -116,7 +116,8 @@ function Home() {
                 'p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} ' +
                 `hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`
               }
-              onClick={() => localStorage.setItem('open_api_key', 'test1')}
+              // In user table, we should have a row to store value 'default_key_stand_for_user1'
+              onClick={() => localStorage.setItem('open_api_key', 'default_key_stand_for_user1')}
             >
               <Link href={'/chat'}>ChatGPT</Link>
             </li>
