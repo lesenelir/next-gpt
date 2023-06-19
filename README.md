@@ -19,8 +19,8 @@ Additionally, Typescript has been incorporated into the entire project.
 
 - [x] GPT-3 API integration
 
-- [ ] Database integration
-  - [ ] MySQL
+- [x] Database integration
+  - [x] MySQL
   - [ ] PostgreSQL
 
 - [ ] Login authentication
@@ -58,7 +58,7 @@ npm run dev
 
 This project is deployed on [Vercel](https://vercel.com/) and uses Vercel storage to store the relevant data.
 
-You can also run this project in your local environment. The data will be stored in the mysql database.
+You can also run this project in your local environment. The data will be stored in the MySQL database.
 
 
 ---
