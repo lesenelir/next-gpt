@@ -1,6 +1,6 @@
 # next-GPT
 
-This is a [Next.js](https://nextjs.org/) project that uses [GPT](https://openai.com/blog/openai-api/) to generate text, which is designed with new UI/UX in mind.
+This is a [Next.js](https://nextjs.org/) project that uses [GPT](https://openai.com/blog/openai-api/) to generate text, which is aimed at learning.
 
 ## Introduction
 
