@@ -29,10 +29,9 @@ Tech Stack: Next.js (Page Router) + React + TypeScript + Tailwind CSS + Prisma +
 - [ ] Project optimization
   - [ ] minimize components re-rendering  
 
-- [ ] ~~Login authentication~~
+- [x] ~~Login authentication~~
 
-( In this project, I haven't implemented login authentication, and I don't plan to. I am using an OpenAI API Key as a user. )
-
+（ In this project, I am using an OpenAI API Key as a user. ）
 
 ## Run
 
