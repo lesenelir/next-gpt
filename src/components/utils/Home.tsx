@@ -111,13 +111,20 @@ function Home() {
             <div className={`w-10 h-10 rounded-full bg-canvas-t-${colorIndex}`}></div>
           </div>
           <ul className={'list-none flex flex-row gap-2 m-6'}>
-            <li className={`p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} 
-            hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`}
+            <li
+              className={
+                'p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} ' +
+                `hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`
+              }
+              onClick={() => localStorage.setItem('open_api_key', 'test1')}
             >
               <Link href={'/chat'}>ChatGPT</Link>
             </li>
-            <li className={`p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} 
-            hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`}
+            <li
+              className={
+                'p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} ' +
+                `hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`
+              }
             >
               <Link href={'/dall'}>DALL-E</Link>
             </li>
