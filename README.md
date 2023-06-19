@@ -1,12 +1,14 @@
 # next-GPT
 
-This is a [Next.js](https://nextjs.org/) project that uses [GPT](https://openai.com/blog/openai-api/) to generate text, which is aimed at learning.
+> If this project has been helpful to you, I would sincerely appreciate it if you could star it. Your small gesture would mean a lot to me and serve as a great source of encouragement, letting me know that I'm on the right track. 🤩
+
+This is a [Next.js](https://nextjs.org/) project that utilizes [GPT](https://openai.com/blog/openai-api/) for text generation, with a focus on learning and educational purposes.
 
 ## Introduction
 
-This project is a learning experience for me to learn Nextjs Pages Router rather than Nextjs App Router.
-I am also using this project to learn how to build a project with Nextjs and Tailwindcss.
-Additionally, Typescript has been incorporated into the entire project.
+This project serves as a valuable learning experience for me, specifically focusing on mastering Next.js Pages Router instead of Next.js App Router. Additionally, I am utilizing this project to gain proficiency in building applications with Next.js and Tailwind CSS. Furthermore, the entire project has been implemented using TypeScript to enhance code quality and maintainability.
+
+Tech Stack: Next.js (Page Router) + React + TypeScript + Tailwind CSS + Prisma + MySQL
 
 ## Features
 
@@ -21,10 +23,15 @@ Additionally, Typescript has been incorporated into the entire project.
 
 - [x] Database integration
   - [x] MySQL
-  - [ ] PostgreSQL
+  - [x] Database tables
+  - [x] Backend APIs for data persistence
+     
+- [ ] Project optimization
+  - [ ] minimize components re-rendering  
 
-- [ ] Login authentication
+- [x] ~~Login authentication~~
 
+（ In this project, I am using an OpenAI API Key as a user. ）
 
 ## Run
 
@@ -40,12 +47,21 @@ git clone git@github.com:lesenelir/next-gpt.git
 npm i
 ```
 
-- Create a `.env` file in the root directory and add the following
+- Create a `.env` file in the root directory and add the following code
 
 > If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
 
 ```
 OPENAI_API_KEY=Your_OpenAI_API_Key
+DATABASE_URL='mysql://root:Your_Local_MySQL_PassWord@localhost:3306/(Your_Local_Database)'
+```
+
+- Prisma Migrate
+
+> Once you are connected to the local database, please proceed with the database migration to create tables.
+
+```
+npx prisma migrate dev
 ```
 
 - Run
@@ -56,9 +72,9 @@ npm run dev
 
 ## Deploy
 
-This project is deployed on [Vercel](https://vercel.com/) and uses Vercel storage to store the relevant data.
+This project will be deployed on [Vercel](https://vercel.com/) and utilize [PlanetScale](https://planetscale.com/) to store relevant data.
 
-You can also run this project in your local environment. The data will be stored in the MySQL database.
+You can also run this project in your local environment. The data will be stored in the local database.
 
 ## Screenshots
 
