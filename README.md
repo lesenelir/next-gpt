@@ -25,9 +25,6 @@ Tech Stack: Next.js (Page Router) + React + TypeScript + Tailwind CSS + Prisma +
   - [x] MySQL
   - [x] Database tables
   - [x] Backend APIs for data persistence
-     
-- [ ] Performance optimization
-  - [ ] minimize components re-rendering  
 
 - [x] ~~Login authentication~~
 
