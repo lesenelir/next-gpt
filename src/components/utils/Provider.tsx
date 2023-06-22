@@ -1,6 +1,6 @@
 import {ReactNode, useState} from "react"
 
-import {IChat, MyContext} from "@/libs/myContext"
+import {IChat, IChatMessage, MyContext} from "@/libs/myContext"
 
 interface IProps {
   children: ReactNode
@@ -10,11 +10,7 @@ function Provider(props: IProps) {
   const {children} = props
   const [theme, setTheme] = useState<string>('light')
   const [chats, setChats] = useState<IChat[]>([])
-  const [chatMessage, setChatMessage] = useState<any[]>([])
-
-  // useEffect(() => {
-  //   localStorage.setItem('theme', theme)
-  // }, [theme])
+  const [chatMessage, setChatMessage] = useState<IChatMessage[]>([])
 
   return (
     <>

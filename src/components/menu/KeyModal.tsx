@@ -27,8 +27,6 @@ function KeyModal(props: IProps) {
       })
     }
 
-    // localStorage.setItem('open_api_key', inputValue)
-
     try {
       const response = await fetch('/api/key', options)
       const data = await response.json()

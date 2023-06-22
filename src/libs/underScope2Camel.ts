@@ -75,7 +75,6 @@ export function chatMessageCamel(dataFromServer: IChatMessageFromServer[]): ICha
   })
 }
 
-
 // export function underScope2Camel(dataFromServer: IDataFromServer[]) {
 //   let res = []
 //
@@ -109,5 +108,3 @@ export function chatMessageCamel(dataFromServer: IChatMessageFromServer[]): ICha
 //     })
 //   }
 // }
-
-

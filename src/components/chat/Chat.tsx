@@ -5,9 +5,9 @@ import {useRouter} from "next/router"
 import {IChatMessage, MyContext} from "@/libs/myContext"
 import {chatItemCamel, chatMessageCamel} from "@/libs/underScope2Camel"
 import ChatInput from "@/components/chat/ChatInput"
-import Footer from "@/components/utils/Footer"
 import UserIcon from "@/components/icon/UserIcon"
 import BotIcon from "@/components/icon/BotIcon"
+import Footer from "@/components/utils/Footer"
 
 function Chat() {
   const [isChatting, setIsChatting] = useState<boolean>(false)
@@ -45,7 +45,7 @@ function Chat() {
     }
 
     if (router.query.id) {
-      init().then(r => console.log(r))
+      init().then(r => r)
     }
   }, [router.query.id, setChatMessage])
 
@@ -65,7 +65,7 @@ function Chat() {
       const menuData = await menuChatsResponse.json()
       setChats(chatItemCamel(menuData?.data))
     }
-    init().then(r => console.log(r))
+    init().then(r => r)
   }, [setChats])
 
   // Render List
@@ -114,7 +114,6 @@ function Chat() {
         `${theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`
       }
     >
-
       {/* Content Area */}
       {!isChatting ? (
         <div

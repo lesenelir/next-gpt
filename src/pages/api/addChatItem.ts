@@ -1,7 +1,7 @@
-import {NextApiRequest, NextApiResponse} from "next"
 import nc from 'next-connect'
+import {v4 as uuidv4} from 'uuid'
+import {NextApiRequest, NextApiResponse} from "next"
 import {PrismaClient, User} from '@prisma/client'
-import { v4 as uuidv4 } from 'uuid'
 
 import {findUserAllDataType} from "@/libs/type"
 

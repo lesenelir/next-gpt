@@ -1,5 +1,5 @@
-import {NextApiRequest, NextApiResponse} from "next"
 import nc from 'next-connect'
+import {NextApiRequest, NextApiResponse} from "next"
 import {ChatMessage, PrismaClient} from '@prisma/client'
 
 const handler = nc<NextApiRequest, NextApiResponse>()

@@ -176,7 +176,6 @@ function ChatBox(props: IProps) {
           />
         </div>
       )}
-
     </div>
   )
 }

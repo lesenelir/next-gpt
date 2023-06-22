@@ -1,5 +1,5 @@
-import {NextApiRequest, NextApiResponse} from "next"
 import nc from 'next-connect'
+import {NextApiRequest, NextApiResponse} from "next"
 import {PrismaClient, User} from '@prisma/client'
 
 import {findUserAllDataType} from "@/libs/type"

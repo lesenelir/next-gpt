@@ -17,8 +17,6 @@ function ChatInput(props: IProps) {
   const router = useRouter()
   const {t} = useTranslation('common')
 
-  // console.log(router.query.id) // chat uuid
-
   const handlerRequest = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
     setInputValue('')
