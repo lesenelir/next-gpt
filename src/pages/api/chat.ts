@@ -3,8 +3,6 @@ import {v4 as uuidv4} from "uuid"
 import {NextApiRequest, NextApiResponse} from "next"
 import {ChatItem, ChatMessage, PrismaClient, User} from "@prisma/client"
 
-// import {findUserAllDataType} from "@/libs/type"
-
 const handler = nc<NextApiRequest, NextApiResponse>()
 
 const prisma = new PrismaClient()
@@ -35,8 +33,9 @@ const generateChatMessage = async (message: string, chat_uuid: string, chat_id: 
       }
     })
 
-    // const response = await fetch('https://api.openai-proxy.com/v1/chat/completions', options)
-    const response = await fetch('https://open.aiproxy.xyz/v1/chat/completions', options)
+    const response = await fetch('https://api.openai-proxy.com/v1/chat/completions', options)
+    // const response = await fetch('https://open.aiproxy.xyz/v1/chat/completions', options)
+    // const response = await fetch('https://api.openai.com/v1/chat/completions', options)
     const data = await response.json()
     const responseData = data?.choices[0]?.message
 
