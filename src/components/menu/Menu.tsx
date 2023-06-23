@@ -134,7 +134,6 @@ function Menu(props: IProps) {
         )}
       </div>
 
-
       {/* Button */}
       <Divide/>
       <div className={'mt-4'}>
