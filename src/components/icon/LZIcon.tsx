@@ -4,7 +4,6 @@ interface IProps {
   className: string
 }
 
-
 function LZIcon(props: IProps) {
   const {width, height, className} = props
 
