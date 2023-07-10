@@ -117,6 +117,7 @@ function Home() {
                 `hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`
               }
               // In user table, we should have a row to store value 'default_key_stand_for_user1'
+              // Design BUG: There is a small design problem, we should save the 'default_key_stand_for_user1' key in the user table in advance.
               onClick={() => localStorage.setItem('open_api_key', 'default_key_stand_for_user1')}
             >
               <Link href={'/chat'}>ChatGPT</Link>
