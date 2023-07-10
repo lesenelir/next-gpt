@@ -30,7 +30,7 @@ model ChatMessage {
   id              Int      @id @default(autoincrement())
   chat_id         Int
   chat_uuid       String
-  message_content String
+  message_content String   @db.Text
   is_User         Boolean
   ChatItem        ChatItem @relation(fields: [chat_id], references: [id])
 }
