@@ -10,6 +10,8 @@ This project serves as a valuable learning experience for me, specifically focus
 
 Tech Stack: Next.js (Page Router) + React + TypeScript + Tailwind CSS + Prisma + MySQL
 
+![project gif](/static/project.gif)
+
 ## Features
 
 - [x] Website UI/UX accomplished with Tailwindcss
@@ -77,11 +79,11 @@ You can also run this project in your local environment. The data will be stored
 
 - Home Page
 
-![home page pc](https://github.com/lesenelir/next-gpt/blob/master/static/home.png)
+![home page pc](/static/home.png)
 
 - Chat Page
   
-![chat page pc](https://github.com/lesenelir/next-gpt/blob/master/static/chat.png)
+![chat page pc](/static/chat.png)
 
 ## Browser Support
 
