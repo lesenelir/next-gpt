@@ -1,5 +1,5 @@
 import Link from "next/link"
-import React, {useEffect, useState} from "react"
+import React, {MutableRefObject, useCallback, useEffect, useRef, useState} from "react"
 
 import LZIcon from "@/components/icon/LZIcon"
 import ArrowUpRightIcon from "@/components/icon/ArrowUpRightIcon"
@@ -21,39 +21,76 @@ function Home() {
   const [textIndex, setTextIndex] = useState<number>(0)
   const [animationStep, setAnimationStep] = useState<'text' | 'circle'>('circle')
 
-  useEffect(() => {
-    // 第一次1.5s后显示信息
-    const firstTimeout = setTimeout(() => {
-      setTextIndex((prevState: number) => (prevState + 1) % 7)
-      setAnimationStep('text') // 显示文字
-    }, 1500)
+  // useEffect(() => {
+  //   // 第一次1.5s后显示信息
+  //   const firstTimeout = setTimeout(() => {
+  //     setTextIndex((prevState: number) => (prevState + 1) % 7)
+  //     setAnimationStep('text') // 显示文字
+  //   }, 1500)
+  //
+  //
+  //   const interval: NodeJS.Timer = setInterval(() => {
+  //     setAnimationStep('circle') // 不显示文字，显示圆圈
+  //     setColorIndex((prevState: number) => (prevState + 1) % 7) // 背景变色
+  //
+  //     const timeout = setTimeout(() => {
+  //       setTextIndex((prevState: number) => (prevState + 1) % 7)
+  //       setAnimationStep('text')
+  //     }, 1500)
+  //
+  //     return () => {
+  //       clearTimeout(timeout)
+  //     }
+  //   }, 3000)
+  //
+  //   return () => {
+  //     clearInterval(interval)
+  //     clearTimeout(firstTimeout)
+  //   }
+  // }, [])
 
+  const animationRef: MutableRefObject<number | undefined> = useRef<number | undefined>()
+  const previousRef: MutableRefObject<number | undefined> = useRef<number | undefined>()
 
-    const interval: NodeJS.Timer = setInterval(() => {
-      setAnimationStep('circle') // 不显示文字，显示圆圈
-      setColorIndex((prevState: number) => (prevState + 1) % 7) // 背景变色
+  const step = useCallback((timestamp: number) => {
+    if (previousRef.current !== undefined) {
+      const elapsed: number = timestamp - previousRef.current
 
-      const timeout = setTimeout(() => {
+      // Check if 1500ms have passed since the last update
+      if (elapsed > 1500) {
         setTextIndex((prevState: number) => (prevState + 1) % 7)
-        setAnimationStep('text')
-      }, 1500)
-
-      return () => {
-        clearTimeout(timeout)
+        setColorIndex((prevState: number) => (prevState + 1) % 7)
+        setAnimationStep((prevState: 'text' | 'circle') => (prevState === 'text' ? 'circle' : 'text'))
+        // Update the previous timestamp to the current one
+        previousRef.current = timestamp
       }
-    }, 3000)
+    } else {
+      // When previousRef.current is undefined, it means this is the first frame
+      // This is the first frame, so set the previous timestamp to the current one
+      previousRef.current = timestamp
+    }
+
+    animationRef.current = requestAnimationFrame(step)
+  }, [animationRef, previousRef])
+
+  useEffect(() => {
+    animationRef.current = requestAnimationFrame(step)
 
     return () => {
-      clearInterval(interval)
-      clearTimeout(firstTimeout)
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
     }
-  }, [])
+  }, [step]) // When previousRef or animationRef changes, step will be recreated. So it will be called again.
 
   return (
     <>
       {/* PC sm === 大于等于640px 电脑  ; max-sm === 小于等于640px 手机 */}
-      <div className={`h-screen flex flex-col justify-between items-center
-          bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex}`}
+      <div
+        className={
+          'h-screen flex flex-col justify-between items-center ' +
+          `bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex}`
+        }
       >
         {/* PC Navbar */}
         {/* sm:flex max-sm:hidden => 当大于等于640px是flex，当最大的最小宽度是小于等于640px是hidden */}
@@ -117,15 +154,16 @@ function Home() {
                 `hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`
               }
               // In user table, we should have a row to store value 'default_key_stand_for_user1'
-              // Design BUG: There is a small design problem, we should save the 'default_key_stand_for_user1' key in the user table in advance.
+              // Design BUG: There is a small design problem, we should save the 'default_key_stand_for_user1' key
+              //             in the user table in advance.
               onClick={() => localStorage.setItem('open_api_key', 'default_key_stand_for_user1')}
             >
               <Link href={'/chat'}>ChatGPT</Link>
             </li>
             <li
               className={
-                'p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} ' +
-                `hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer`
+                `p-2 rounded-lg border bg-canvas-b-${colorIndex} text-canvas-t-${colorIndex} ` +
+                'hover:bg-wordColor-dark hover:text-wordColor-light hover:cursor-pointer'
               }
             >
               <Link href={'/dall'}>DALL-E</Link>
