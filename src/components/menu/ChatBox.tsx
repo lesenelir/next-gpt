@@ -22,7 +22,7 @@ function ChatBox(props: IProps) {
   const [inputValue, setInputValue] = useState<string>(message)
   const [isDelete, setIsDelete] = useState<boolean>(false)
   const [isEdit, setIsEdit] = useState<boolean>(false)
-  const {setChats} = useContext(MyContext)
+  const {dispatch} = useContext(MyContext) // const {setChats} = useContext(MyContext)
   const router = useRouter()
 
   const handlerCheckClick = async (e: MouseEvent<HTMLElement, globalThis.MouseEvent>) => {
@@ -43,7 +43,8 @@ function ChatBox(props: IProps) {
       const response = await fetch('/api/updateChatItem', options)
       const data = await response.json()
       const chatsFromBackend = data?.data[0]?.ChatItems
-      setChats(underScope2Camel(chatsFromBackend))
+      // setChats(underScope2Camel(chatsFromBackend))
+      dispatch({type: 'SET_CHATS', payload: underScope2Camel(chatsFromBackend)})
       await router.push(`/chat/${itemUUID}`)
     } catch (e) {
       console.error(e)
@@ -69,7 +70,8 @@ function ChatBox(props: IProps) {
       const response = await fetch('/api/deleteChatItem', options)
       const data = await response.json()
       const chatsFromBackend = data?.data[0]?.ChatItems
-      setChats(underScope2Camel(chatsFromBackend))
+      // setChats(underScope2Camel(chatsFromBackend))
+      dispatch({type: 'SET_CHATS', payload: underScope2Camel(chatsFromBackend)})
       await router.push('/chat')
     } catch (e) {
       console.error(e)

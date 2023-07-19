@@ -7,7 +7,7 @@ import {underScope2Camel} from "@/libs/underScope2Camel"
 import TrashIcon from "@/components/icon/TrashIcon"
 
 function MenuClear() {
-  const {setChats} = useContext(MyContext)
+  const {dispatch} = useContext(MyContext) // const {setChats} = useContext(MyContext)
   const {t} = useTranslation('common')
   const router = useRouter()
 
@@ -26,7 +26,8 @@ function MenuClear() {
       const response = await fetch('/api/clearChatItem', options)
       const data = await response.json()
       const chatsFromBackend = data?.data[0]?.ChatItems
-      setChats(underScope2Camel(chatsFromBackend))
+      // setChats(underScope2Camel(chatsFromBackend))
+      dispatch({type: 'SET_CHATS', payload: underScope2Camel(chatsFromBackend)})
       await router.push(`/chat`)
     } catch (e) {
       console.error(e)

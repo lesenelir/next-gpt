@@ -11,7 +11,7 @@ import Footer from "@/components/utils/Footer"
 
 function Chat() {
   const [isChatting, setIsChatting] = useState<boolean>(false)
-  const {theme, setChats, chatMessage, setChatMessage} = useContext(MyContext)
+  const {state, dispatch} = useContext(MyContext) // const {theme, setChats, chatMessage, setChatMessage} = useContext(MyContext)
   const {t} = useTranslation('common')
   const router = useRouter()
 
@@ -35,7 +35,8 @@ function Chat() {
         const dataFromBackend = data?.data
         if (Array.isArray(dataFromBackend)) {
           setIsChatting(true)
-          setChatMessage(chatMessageCamel(dataFromBackend))
+          // setChatMessage(chatMessageCamel(dataFromBackend))
+          dispatch({type: 'SET_CHAT_MESSAGE', payload: chatMessageCamel(dataFromBackend)})
         } else {
           setIsChatting(false)
         }
@@ -47,7 +48,7 @@ function Chat() {
     if (router.query.id) {
       init().then(r => r)
     }
-  }, [router.query.id, setChatMessage])
+  }, [router.query.id, dispatch])
 
   useEffect(() => {
     const optionsGetChatItem = {
@@ -63,20 +64,21 @@ function Chat() {
     const init = async () => {
       const menuChatsResponse = await fetch('/api/getChatItem', optionsGetChatItem)
       const menuData = await menuChatsResponse.json()
-      setChats(chatItemCamel(menuData?.data))
+      // setChats(chatItemCamel(menuData?.data))
+      dispatch({type: 'SET_CHATS', payload: chatItemCamel(menuData?.data)})
     }
     init().then(r => r)
-  }, [setChats])
+  }, [dispatch])
 
   // Render List
-  const chatList = chatMessage.map((chat: IChatMessage) => {
+  const chatList = state.chatMessage.map((chat: IChatMessage) => {
     if (chat.isUser) {
       return (
         <div
           key={chat.id}
           className={
             'w-full p-8 flex flex-row ' +
-            `${theme === 'dark' ? 'bg-botBackGround-userDark text-wordColor-light' : 'text-wordColor-dark'}`
+            `${state.theme === 'dark' ? 'bg-botBackGround-userDark text-wordColor-light' : 'text-wordColor-dark'}`
           }
         >
           <div className={'sm:ml-60'}>
@@ -93,7 +95,7 @@ function Chat() {
           key={chat.id}
           className={
             'w-full p-8 flex flex-row ' +
-            `${theme === 'dark' ? 'text-wordColor-light' : 'bg-botBackGround-light text-wordColor-dark'}`
+            `${state.theme === 'dark' ? 'text-wordColor-light' : 'bg-botBackGround-light text-wordColor-dark'}`
           }
         >
           <div className={'sm:ml-60'}>
@@ -111,7 +113,7 @@ function Chat() {
     <div
       className={
         'h-screen flex-1 flex flex-col justify-center items-center ' +
-        `${theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`
+        `${state.theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`
       }
     >
       {/* Content Area */}
@@ -119,7 +121,7 @@ function Chat() {
         <div
           className={
             'w-full flex-1 flex flex-col justify-center items-center mb-4 p-4 ' +
-            `${theme === 'dark' ? 'text-wordColor-light' : 'text-wordColor-dark'}`
+            `${state.theme === 'dark' ? 'text-wordColor-light' : 'text-wordColor-dark'}`
           }
         >
           <h2 className={'text-2xl p-2'}>{t('chat.title')}</h2>

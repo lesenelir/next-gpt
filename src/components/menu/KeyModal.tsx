@@ -14,7 +14,7 @@ function KeyModal(props: IProps) {
   const {setShowModalKey} = props
   const [inputValue, setInputValue] = useState<string>('')
   const {t} = useTranslation('common')
-  const {setChats} = useContext(MyContext)
+  const {dispatch} = useContext(MyContext) // const {setChats} = useContext(MyContext)
 
   const handlerSaveKey = async () => {
     const options = {
@@ -32,7 +32,8 @@ function KeyModal(props: IProps) {
       const data = await response.json()
       const chatsFromBackend = data?.data[0]?.ChatItems
       setShowModalKey(false)
-      setChats(underScope2Camel(chatsFromBackend))
+      // setChats(underScope2Camel(chatsFromBackend))
+      dispatch({type: 'SET_CHATS', payload: underScope2Camel(chatsFromBackend)})
       localStorage.setItem('open_api_key', data?.data[0]?.api_key) // Save data open_api_key to localStorage
     } catch (e) {
       console.error(e)

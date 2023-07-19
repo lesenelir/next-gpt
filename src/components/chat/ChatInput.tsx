@@ -2,7 +2,7 @@ import {ChangeEvent, Dispatch, FormEvent, KeyboardEvent, SetStateAction, useCont
 import {useTranslation} from "next-i18next"
 import {useRouter} from "next/router"
 
-import {IChatMessage, MyContext} from "@/libs/myContext"
+import {MyContext} from "@/libs/myContext"
 import {chatMessageCamel} from "@/libs/underScope2Camel"
 import SendIcon from "@/components/icon/SendIcon"
 
@@ -13,7 +13,7 @@ interface IProps {
 function ChatInput(props: IProps) {
   const {setIsChatting} = props
   const [inputValue, setInputValue] = useState<string>('')
-  const {theme, setChatMessage} = useContext(MyContext)
+  const {state, dispatch} = useContext(MyContext) // const {theme, setChatMessage} = useContext(MyContext)
   const router = useRouter()
   const {t} = useTranslation('common')
 
@@ -22,19 +22,38 @@ function ChatInput(props: IProps) {
     setInputValue('')
     // Add a temp message to the chat box.
     // When the backend response, the temp message will be replaced by the real message.
-    setChatMessage((prevState: IChatMessage[]) => [...prevState, {
-      id: Math.random(),
-      chatId: Math.random(),
-      chatUUID: 'temp_uuid',
-      messageContent: inputValue,
-      isUser: true
-    }, {
-      id: Math.random(),
-      chatId: Math.random(),
-      chatUUID: 'temp_uuid',
-      messageContent: 'Loading...',
-      isUser: false
-    }])
+    // setChatMessage((prevState: IChatMessage[]) => [...prevState, {
+    //   id: Math.random(),
+    //   chatId: Math.random(),
+    //   chatUUID: 'temp_uuid',
+    //   messageContent: inputValue,
+    //   isUser: true
+    // }, {
+    //   id: Math.random(),
+    //   chatId: Math.random(),
+    //   chatUUID: 'temp_uuid',
+    //   messageContent: 'Loading...',
+    //   isUser: false
+    // }])
+    dispatch({
+      type: 'SET_CHAT_MESSAGE',
+      payload: [
+        ...state.chatMessage,
+        {
+          id: Math.random(),
+          chatId: Math.random(),
+          chatUUID: 'temp_uuid',
+          messageContent: inputValue,
+          isUser: true
+        }, {
+          id: Math.random(),
+          chatId: Math.random(),
+          chatUUID: 'temp_uuid',
+          messageContent: 'Loading...',
+          isUser: false
+        }
+      ]
+    })
 
     const options = {
       method: 'POST',
@@ -56,7 +75,8 @@ function ChatInput(props: IProps) {
       if (!router.query.id) {
         await router.push(`/chat/${dataFromBackend[0]?.chat_uuid}`)
       }
-      setChatMessage(chatMessageCamel(dataFromBackend))
+      // setChatMessage(chatMessageCamel(dataFromBackend))
+      dispatch({type: 'SET_CHAT_MESSAGE', payload: chatMessageCamel(dataFromBackend)})
       setIsChatting(true)
     } catch (e) {
       console.log('client error ', e)
@@ -67,7 +87,7 @@ function ChatInput(props: IProps) {
     <div
       className={
         'relative w-3/5 border p-1 rounded-lg drop-shadow-lg ' +
-        `${theme === 'dark' ? 'bg-tuna-chatInput border-gray-700' : 'bg-white'}`
+        `${state.theme === 'dark' ? 'bg-tuna-chatInput border-gray-700' : 'bg-white'}`
       }
     >
       <form onSubmit={handlerRequest}>
@@ -80,7 +100,7 @@ function ChatInput(props: IProps) {
           value={inputValue}
           className={
             'p-1 w-full rounded-lg mt-1 resize-none focus-visible:outline-none ' +
-            `${theme === 'dark' ? 'bg-tuna-chatInput text-wordColor-light' : 'bg-white text-black'}`
+            `${state.theme === 'dark' ? 'bg-tuna-chatInput text-wordColor-light' : 'bg-white text-black'}`
           }
           onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setInputValue(e.target.value)}
           onKeyDown={(e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -94,13 +114,13 @@ function ChatInput(props: IProps) {
           type='submit'
           className={
             'absolute right-1 top-1 mr-2 mt-2 opacity-30 ' +
-            `${theme === 'dark' ? 'text-white' : 'text-black'}`
+            `${state.theme === 'dark' ? 'text-white' : 'text-black'}`
           }
         >
           <SendIcon
             width={20}
             height={20}
-            className={`mt-0.5 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}
+            className={`mt-0.5 ${state.theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}
           />
         </button>
       </form>

@@ -1,4 +1,4 @@
-import {createContext, SetStateAction, Dispatch} from "react"
+import {createContext, Dispatch} from "react"
 
 export interface IChat {
   id: number
@@ -17,13 +17,29 @@ export interface IChatMessage {
   isUser: boolean
 }
 
-interface IMyContext {
+// interface IMyContext {
+//   theme: string
+//   setTheme: Dispatch<SetStateAction<string>>
+//   chats: IChat[]
+//   setChats: Dispatch<SetStateAction<IChat[]>>
+//   chatMessage: IChatMessage[]
+//   setChatMessage: Dispatch<SetStateAction<IChatMessage[]>>
+// }
+
+export interface IState {
   theme: string
-  setTheme: Dispatch<SetStateAction<string>>
   chats: IChat[]
-  setChats: Dispatch<SetStateAction<IChat[]>>
   chatMessage: IChatMessage[]
-  setChatMessage: Dispatch<SetStateAction<IChatMessage[]>>
+}
+
+export type Action =
+  | { type: 'SET_THEME', payload: string }
+  | { type: 'SET_CHATS', payload: IChat[] }
+  | { type: 'SET_CHAT_MESSAGE', payload: IChatMessage[] }
+
+interface IMyContext {
+  state: IState
+  dispatch: Dispatch<Action>
 }
 
 export const MyContext = createContext<IMyContext>({} as IMyContext)

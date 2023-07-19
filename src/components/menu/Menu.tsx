@@ -23,7 +23,7 @@ function Menu(props: IProps) {
   const [isSearch, setIsSearch] = useState<boolean>(false)
   const [selectChatId, setSelectChatId] = useState<number | null>(null)
   const {t} = useTranslation('common')
-  const {theme, chats, setChats} = useContext(MyContext)
+  const {state, dispatch} = useContext(MyContext) // const {theme, chats, setChats} = useContext(MyContext)
 
   const handlerAddChat = async () => {
     const options = {
@@ -40,7 +40,8 @@ function Menu(props: IProps) {
       const response = await fetch('/api/addChatItem', options)
       const data = await response.json()
       const chatsFromBackend = data?.data[0]?.ChatItems
-      setChats(underScope2Camel(chatsFromBackend))
+      // setChats(underScope2Camel(chatsFromBackend))
+      dispatch({type: 'SET_CHATS', payload: underScope2Camel(chatsFromBackend)})
     } catch (e) {
       console.error(e)
     }
@@ -51,7 +52,7 @@ function Menu(props: IProps) {
       <div
         className={
           'max-sm:hidden h-10 p-2 border border-gray-300 m-2 rounded-lg cursor-pointer ' +
-          `${theme === 'dark' ? 'text-wordColor-light hover:bg-menuColors-900' : 'text-wordColor-dark hover:bg-menuColors-50'}`
+          `${state.theme === 'dark' ? 'text-wordColor-light hover:bg-menuColors-900' : 'text-wordColor-dark hover:bg-menuColors-50'}`
         }
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
@@ -110,7 +111,7 @@ function Menu(props: IProps) {
       <Divide/>
       <div className={'flex-grow overflow-auto scrollable'}>
         {isSearch ? (
-          chats.filter((chat: IChat) => chat.itemName.includes(search)).map((chat: IChat) => (
+          state.chats.filter((chat: IChat) => chat.itemName.includes(search)).map((chat: IChat) => (
             <ChatBox
               key={chat.itemUUID}
               message={chat.itemName}
@@ -121,7 +122,7 @@ function Menu(props: IProps) {
             />
           ))
         ) : (
-          chats.map((chat: IChat) => (
+          state.chats.map((chat: IChat) => (
             <ChatBox
               key={chat.itemUUID}
               message={chat.itemName}
