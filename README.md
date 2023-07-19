@@ -8,7 +8,7 @@ This is a [Next.js](https://nextjs.org/) project that utilizes [GPT](https://ope
 
 This project serves as a valuable learning experience for me, specifically focusing on mastering Next.js Pages Router instead of Next.js App Router. Additionally, I am utilizing this project to gain proficiency in building applications with Next.js and Tailwind CSS. Furthermore, the entire project has been implemented using TypeScript to enhance code quality and maintainability.
 
-Tech Stack: Next.js (Page Router) + React + TypeScript + Tailwind CSS + Prisma + MySQL
+Tech Stack: Next.js (Pages Router) + React + TypeScript + Tailwind CSS + Prisma + MySQL
 
 ![project gif](/static/project.gif)
 
