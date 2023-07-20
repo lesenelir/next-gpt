@@ -78,15 +78,15 @@ function Chat() {
           key={chat.id}
           className={
             'w-full p-8 flex flex-row ' +
-            `${state.theme === 'dark' ? 'bg-botBackGround-userDark text-wordColor-light' : 'text-wordColor-dark'}`
+            `${state.theme === 'dark' ? 'bg-botBackGround-userDark text-chatMessage-dark' : 'text-chatMessage-light'}`
           }
         >
           <div className={'sm:ml-60'}>
             <UserIcon/>
           </div>
-          <div className={'sm:mr-60'}>
+          <article className={'sm:mr-60'}>
             <p className={'ml-4'}>{chat.messageContent}</p>
-          </div>
+          </article>
         </div>
       )
     } else { // isAssistant
@@ -95,15 +95,16 @@ function Chat() {
           key={chat.id}
           className={
             'w-full p-8 flex flex-row ' +
-            `${state.theme === 'dark' ? 'text-wordColor-light' : 'bg-botBackGround-light text-wordColor-dark'}`
+            `${state.theme === 'dark' ? 'text-chatMessage-dark' : 'bg-botBackGround-light text-chatMessage-light'}`
           }
         >
           <div className={'sm:ml-60'}>
             <BotIcon/>
           </div>
-          <div className={'sm:mr-60'}>
+          <article className={'sm:mr-60'}>
             <p className={'ml-4'}>{chat.messageContent}</p>
-          </div>
+            {/*<p className={'ml-4'} dangerouslySetInnerHTML={{__html: chat.messageContent}}/>*/}
+          </article>
         </div>
       )
     }
