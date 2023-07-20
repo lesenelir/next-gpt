@@ -13,7 +13,7 @@ interface IProps {
 
 function Layout(props: IProps) {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(true)
-  const {theme} = useContext(MyContext)
+  const {state} = useContext(MyContext) // const {theme} = useContext(MyContext)
   const {children} = props
 
   const toggleMenu = () => {
@@ -30,22 +30,22 @@ function Layout(props: IProps) {
 
       {/* Mobile */}
       <div className={'h-screen max-sm:flex sm:hidden flex-col'}>
-        <div className={`${theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`}>
+        <div className={`${state.theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`}>
           <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
           <div
-            className={`${isMenuOpen ? 'block' : 'hidden'} fixed top-0 left-3/4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}
+            className={`${isMenuOpen ? 'block' : 'hidden'} fixed top-0 left-3/4 ${state.theme === 'dark' ? 'text-white' : 'text-black'}`}
             onClick={toggleMenu}
           >
             <XIcon width={24} height={24}/>
           </div>
-          <button className={`${theme === 'dark' ? 'text-white' : 'text-black'}`} onClick={toggleMenu}><ShrinkIcon/></button>
+          <button className={`${state.theme === 'dark' ? 'text-white' : 'text-black'}`} onClick={toggleMenu}><ShrinkIcon/></button>
         </div>
         <Divide/>
         {children}
       </div>
 
       {/* PC */}
-      <div className={`h-screen max-sm:hidden sm:flex flex-row ${theme === 'dark' ? 'bg-menuColors-chatGround' : 'bg-white'}`}>
+      <div className={`h-screen max-sm:hidden sm:flex flex-row ${state.theme === 'dark' ? 'bg-menuColors-chatGround' : 'bg-white'}`}>
         <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
         {children}
       </div>
