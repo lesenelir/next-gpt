@@ -64,7 +64,7 @@ function Menu(props: IProps) {
   return (
     <div
       className={
-        'h-screen flex flex-col justify-between bg-menuColors-950 p-2 w-64 ' +
+        'h-screen flex flex-col justify-between bg-menuColors-950 p-2 w-64 min-w-fit ' +
         'max-sm:fixed max-sm:top-0 max-sm:left-0 max-sm:z-10 max-sm:w-3/4 max-sm:flex max-sm:flex-col ' +
         `${isMenuOpen ? 'sm:flex flex-col max-sm:block' : 'sm:hidden max-sm:hidden'}`
       }
