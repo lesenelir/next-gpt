@@ -59,6 +59,10 @@ module.exports = {
           'light': '#F7F7F8',
           'userDark': '#444653'
         },
+        chatMessage: {
+          'light': '#384150',
+          'dark': '#D2D5DB',
+        },
         canvas: {
           'b-0': '#235354',
           't-0': '#FFFFDF',
