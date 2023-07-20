@@ -1,6 +1,10 @@
 import nc from 'next-connect'
+import {marked} from "marked"
+import {mangle} from "marked-mangle"
 import {v4 as uuidv4} from "uuid"
+import {gfmHeadingId} from "marked-gfm-heading-id"
 import {NextApiRequest, NextApiResponse} from "next"
+
 import {ChatItem, ChatMessage, PrismaClient, User} from "@prisma/client"
 
 const handler = nc<NextApiRequest, NextApiResponse>()
@@ -39,10 +43,17 @@ const generateChatMessage = async (message: string, chat_uuid: string, chat_id: 
     const data = await response.json()
     const responseData = data?.choices[0]?.message
 
+    // markdown to html string with marked ---> response.content
+    marked.use(mangle())
+    marked.use(gfmHeadingId({prefix: "my-prefix-"}))
+    const htmlContent: string = marked(responseData.content)
+    console.log(htmlContent)
+
     // save the response message to the database
     await prisma.chatMessage.create({
       data: {
-        message_content: responseData.content,
+        // message_content: responseData.content,
+        message_content: htmlContent,
         is_User: false,
         chat_uuid: chat_uuid,
         chat_id: chat_id
