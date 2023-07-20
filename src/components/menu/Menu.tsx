@@ -51,7 +51,7 @@ function Menu(props: IProps) {
     return (
       <div
         className={
-          'max-sm:hidden h-10 p-2 border border-gray-300 m-2 rounded-lg cursor-pointer ' +
+          'max-sm:hidden fixed h-10 p-2 border border-gray-300 m-2 rounded-lg cursor-pointer ' +
           `${state.theme === 'dark' ? 'text-wordColor-light hover:bg-menuColors-900' : 'text-wordColor-dark hover:bg-menuColors-50'}`
         }
         onClick={() => setIsMenuOpen(!isMenuOpen)}
