@@ -1,12 +1,12 @@
 # next-GPT
 
-> If this project has been helpful to you, I would sincerely appreciate it if you could star it. Your small gesture would mean a lot to me and serve as a great source of encouragement, letting me know that I'm on the right track. 🤩
+> If this project has been helpful to you, I would sincerely appreciate it if you could star it. Your small gesture would mean a lot to me and serve as a great source of encouragement, letting me know I'm on the right track. 🤩
 
 This is a [Next.js](https://nextjs.org/) project that utilizes [GPT](https://openai.com/blog/openai-api/) for text generation, with a focus on learning and educational purposes.
 
 ## Introduction
 
-This project serves as a valuable learning experience for me, specifically focusing on mastering Next.js Pages Router instead of Next.js App Router. Additionally, I am utilizing this project to gain proficiency in building applications with Next.js and Tailwind CSS. Furthermore, the entire project has been implemented using TypeScript to enhance code quality and maintainability.
+This project serves as a valuable learning experience for me, specifically focusing on mastering Next.js Pages Router instead of Next.js App Router. Additionally, I am utilizing this project to gain proficiency in building applications with Next.js and Tailwind CSS. Furthermore, the entire project uses TypeScript to enhance code quality and maintainability.
 
 Tech Stack: Next.js (Pages Router) + React + TypeScript + Tailwind CSS + Prisma + MySQL
 
@@ -18,8 +18,9 @@ Tech Stack: Next.js (Pages Router) + React + TypeScript + Tailwind CSS + Prisma 
   - [x] Website components (Menu, Chat, etc.) 
   - [x] Dark mode and Light mode
   - [x] Mobile support
-  - [x] i18n Internationalization
+  - [x] I18n Internationalization
   - [x] Home page animation
+  - [x] Markdown convert to html string and styled it
 
 - [x] GPT-3 API integration
 
@@ -30,7 +31,7 @@ Tech Stack: Next.js (Pages Router) + React + TypeScript + Tailwind CSS + Prisma 
 
 - [x] ~~Login authentication~~
 
-（ In this project, I am using an OpenAI API Key as a user. ）
+（ In this project, I use an OpenAI API Key as a user. ）
 
 ## Run
 
