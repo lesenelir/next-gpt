@@ -43,6 +43,7 @@
   background-color: #000000;
   padding: 16px;
   border-radius: 16px;
+  margin: 16px 0;
 }
 
 .markdown code {
@@ -84,6 +85,7 @@
   background-color: #000000;
   padding: 16px;
   border-radius: 16px;
+  margin: 16px 0;
 }
 
 .markdown-dark code {
