@@ -85,6 +85,10 @@ You can also run this project in your local environment. The data will be stored
   
 ![chat page pc](/static/chat.png)
 
+- Chat with code
+
+![chat with code](/static/chat-code.png)
+
 ## Browser Support
 
 `Chrome` is the recommended browser for local development
