@@ -19,6 +19,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
+    "highlight.js": "^11.8.0",
     "https-proxy-agent": "^7.0.0",
     "marked": "^5.1.1",
     "marked-gfm-heading-id": "^3.0.4",
