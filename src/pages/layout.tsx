@@ -30,7 +30,7 @@ function Layout(props: IProps) {
 
       {/* Mobile */}
       <div className={'min-h-screen max-sm:flex sm:hidden flex-col'}>
-        <div className={`fixed top-0 w-full ${state.theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`}>
+        <div className={`fixed top-0 w-full z-20 ${state.theme === 'dark' ? 'bg-tuna-900' : 'bg-white'}`}>
           <Menu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>
           <div
             className={`${isMenuOpen ? 'block' : 'hidden'} fixed top-0 left-3/4 ${state.theme === 'dark' ? 'text-white' : 'text-black'}`}
