@@ -81,10 +81,10 @@ function Chat() {
             `${state.theme === 'dark' ? 'bg-botBackGround-userDark text-chatMessage-dark' : 'text-chatMessage-light'}`
           }
         >
-          <div className={'sm:ml-60'}>
+          <div className={'ml-4'}>
             <UserIcon/>
           </div>
-          <article className={'sm:mr-60'}>
+          <article className={'mr-4'}>
             <p className={'ml-4'}>{chat.messageContent}</p>
           </article>
         </div>
@@ -98,12 +98,14 @@ function Chat() {
             `${state.theme === 'dark' ? 'text-chatMessage-dark' : 'bg-botBackGround-light text-chatMessage-light'}`
           }
         >
-          <div className={'sm:ml-60'}>
+          <div className={'ml-4'}>
             <BotIcon/>
           </div>
-          <article className={'sm:mr-60'}>
-            <p className={'ml-4'}>{chat.messageContent}</p>
-            {/*<p className={'ml-4'} dangerouslySetInnerHTML={{__html: chat.messageContent}}/>*/}
+          <article className={'mr-4 overflow-auto'}>
+            <p
+              className={`ml-4 ${state.theme === 'light' ? 'markdown': 'markdown-dark'}`}
+              dangerouslySetInnerHTML={{__html: chat.messageContent}}
+            />
           </article>
         </div>
       )

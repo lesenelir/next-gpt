@@ -7,7 +7,6 @@
   width: 8px;
 }
 
-
 /* 设置特定元素的滚动条背景颜色 */
 .scrollable::-webkit-scrollbar-track {
   background: transparent;
@@ -24,3 +23,84 @@
   background: #e2e4e5;
 }
 
+/* chatMessage content */
+/* light */
+.markdown {
+  @apply text-chatMessage-light;
+}
+
+.markdown h1 h2 h3 h4 h5 h6 {
+  color: #000000;
+}
+
+.markdown p {
+  margin: 4px 0;
+}
+
+.markdown pre {
+  @apply text-chatMessage-light;
+  overflow: auto;
+  background-color: #000000;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.markdown code {
+  @apply font-normal text-chatMessage-light;
+  background-color: #D3D3D3;
+  border-radius: 4px;
+}
+
+.markdown code::before {
+  content: '';
+}
+
+.markdown code::after {
+  content: '';
+}
+
+.markdown pre code {
+  @apply text-chatMessage-dark;
+  background-color: #000000 !important;
+}
+
+/* markdown-dark */
+/* dark */
+.markdown-dark {
+  @apply text-chatMessage-dark;
+}
+
+.markdown-dark h1 h2 h3 h4 h5 h6 {
+  color: #ffffff;
+}
+
+.markdown-dark p {
+  margin: 4px 0;
+}
+
+.markdown-dark pre {
+  @apply text-chatMessage-light;
+  overflow: auto;
+  background-color: #000000;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.markdown-dark code {
+  @apply font-normal text-chatMessage-dark;
+  background-color: #444648;
+  border-radius: 4px;
+}
+
+.markdown-dark code::before {
+  content: '';
+}
+
+.markdown-dark code::after {
+  content: '';
+}
+
+.markdown-dark pre code {
+  @apply text-chatMessage-dark;
+  background-color: #000000 !important;
+}
