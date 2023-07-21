@@ -41,7 +41,6 @@
   @apply text-chatMessage-light;
   overflow: auto;
   background-color: #000000;
-  padding: 16px;
   border-radius: 16px;
   margin: 16px 0;
 }
@@ -83,7 +82,6 @@
   @apply text-chatMessage-light;
   overflow: auto;
   background-color: #000000;
-  padding: 16px;
   border-radius: 16px;
   margin: 16px 0;
 }

@@ -2,6 +2,9 @@ import {useContext, useEffect, useState} from "react"
 import {useTranslation} from "next-i18next"
 import {useRouter} from "next/router"
 
+import 'highlight.js/styles/color-brewer.css'
+import hljs from "highlight.js"
+
 import {IChatMessage, MyContext} from "@/libs/myContext"
 import {chatItemCamel, chatMessageCamel} from "@/libs/underScope2Camel"
 import ChatInput from "@/components/chat/ChatInput"
@@ -69,6 +72,13 @@ function Chat() {
     }
     init().then(r => r)
   }, [dispatch])
+
+  // highlight pre code
+  useEffect(() => {
+    document.querySelectorAll("pre code").forEach(block => {
+      hljs.highlightBlock(block as HTMLElement)
+    })
+  }, [state.chatMessage])
 
   // Render List
   const chatList = state.chatMessage.map((chat: IChatMessage) => {
