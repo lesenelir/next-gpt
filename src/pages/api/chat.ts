@@ -47,7 +47,6 @@ const generateChatMessage = async (message: string, chat_uuid: string, chat_id: 
     marked.use(mangle())
     marked.use(gfmHeadingId({prefix: "my-prefix-"}))
     const htmlContent: string = marked(responseData.content)
-    console.log(htmlContent)
 
     // save the response message to the database
     await prisma.chatMessage.create({
