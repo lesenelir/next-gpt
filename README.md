@@ -78,10 +78,6 @@ You can also run this project in your local environment. The data will be stored
 
 ## Screenshots
 
-- Animation
-
-![animation](/static/animation.gif)
-
 - Home Page
 
 ![home page pc](/static/home.png)
