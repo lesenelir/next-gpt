@@ -20,7 +20,8 @@ Tech Stack: Next.js (Pages Router) + React + TypeScript + Tailwind CSS + Prisma 
   - [x] Mobile support
   - [x] I18n Internationalization
   - [x] Home page animation
-  - [x] Markdown convert to html string and styled it
+     - To see the most accurate animation implementation, visit the [Type](https://github.com/lesenelir/type) repository.  Highly recommended :)
+  - [x] Markdown converted to html string and styled it
 
 - [x] GPT-3 API integration
 
