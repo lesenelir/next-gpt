@@ -4,6 +4,8 @@
 
 This is a [Next.js](https://nextjs.org/) project that utilizes [GPT](https://openai.com/blog/openai-api/) for text generation, with a focus on learning and educational purposes.
 
+If you want to learn more about the implementation of typewriter and home page animations, please refer to the [Type repository](https://github.com/lesenelir/type). 🍭
+
 ## Introduction
 
 This project serves as a valuable learning experience for me, specifically focusing on mastering Next.js Pages Router instead of Next.js App Router. Additionally, I am utilizing this project to gain proficiency in building applications with Next.js and Tailwind CSS. Furthermore, the entire project uses TypeScript to enhance code quality and maintainability.
